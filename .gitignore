@@ -1,3 +1,5 @@
+AGENTS.md
+*.py
 # Build artifacts
 /cpp/build/
 /build/
