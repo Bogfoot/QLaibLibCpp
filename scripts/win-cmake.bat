@@ -12,9 +12,13 @@ for %%i in ("%REPO_ROOT%\..\vcpkg") do set VCPKG_ROOT=%%~fi
 
 set BUILD_DIR=%REPO_ROOT%\cpp\build
 set TOOLCHAIN=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
-rem In manifest mode, deps land in vcpkg_installed inside the repo
+rem Prefer manifest output under repo; fall back to global installed
 set QT_PREFIX=%REPO_ROOT%\vcpkg_installed\x64-windows\share\qt6
 set QT_DIR=%QT_PREFIX%\cmake
+if not exist "%QT_DIR%\Qt6Config.cmake" (
+  set QT_PREFIX=%VCPKG_ROOT%\installed\x64-windows\share\qt6
+  set QT_DIR=%QT_PREFIX%\cmake
+)
 set COINCFINDER_LIB=%REPO_ROOT%\coincfinder\build\coincfinder_core.lib
 set TDCBASE_LIB=%REPO_ROOT%\DLL_64bit\tdcbase.lib
 
