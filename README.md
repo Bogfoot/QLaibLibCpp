@@ -21,82 +21,62 @@ Installation requirements:
 - Qt6 (Core, Widgets, Charts)
 - coincfinder sources (bundled in `coincfinder/` and built as part of GUI)
 
+
+
 ### C++/Qt GUI build
 
-#### Linux (Ubuntu/Debian example)
-Dependencies: Qt6 (`qt6-base-dev`, `qt6-charts-dev`), CMake ≥3.22, C++20 compiler, coincfinder static lib.
+#### Linux (Qt from distro)
+Dependencies: Qt6 (Qt6Core/Widgets/Charts), CMake ≥3.22, C++20 compiler.
 
 ```bash
 # build coincfinder core
-cmake -S coincfinder -B coincfinder/build -G Ninja
+cmake -S coincfinder -B coincfinder/build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build coincfinder/build
 
 # build GUI
-cmake -S cpp -B cpp/build -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON \
-      -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6 \
-      -DCOINCFINDER_CORE=$(pwd)/coincfinder/build/libcoincfinder_core.a
+cmake -S cpp -B cpp/build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+  -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON \
+  -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6 \
+  -DCOINCFINDER_CORE=$(pwd)/coincfinder/build/libcoincfinder_core.a
 cmake --build cpp/build
 
 # run
-./cpp/build/apps/qlaib_gui                               # live hardware (fallback to mock)
-./cpp/build/apps/qlaib_gui --mode=replay --replay-bin ./capture.bin  # replay BIN
+./cpp/build/apps/qlaib_gui --mode=mock
 ```
 
-#### Windows (MSVC + vcpkg example)
-Prereqs: Visual Studio 2022 (or Build Tools), CMake ≥3.22, a standalone vcpkg clone with Qt6 base + charts installed, coincfinder built with MSVC, quTAG SDK DLLs (`DLL_64bit/`). Use your own vcpkg clone (e.g., `C:\Users\you\vcpkg`), not the embedded VS copy.
+#### Windows (MSVC, no vcpkg)
+Prereqs: Qt official install (MSVC 64-bit + Qt Charts), Visual Studio 2022 (or Build Tools), CMake ≥3.22, coincfinder built with MSVC, quTAG SDK DLLs (`DLL_64bit/`).
 
-```powershell
-# Option A: manifest mode (run in repo root of your solution)
-vcpkg new --application
-vcpkg add port qtbase
-vcpkg add port qtcharts
-vcpkg install --triplet x64-windows
-
-# Option B: classic install from your vcpkg clone
-cd C:\Users\you\vcpkg
-.\bootstrap-vcpkg.bat
-.\vcpkg install qtbase qtcharts --triplet x64-windows
-
-# build coincfinder
-cmake -S coincfinder -B coincfinder/build -G "Ninja"
+1) Install Qt (e.g., `C:/Qt/6.10.1/msvc2022_64`) with MSVC 64-bit and Qt Charts.
+2) Build coincfinder (Release):
+```cmd
+cmake -S coincfinder -B coincfinder/build -G "Ninja" -DCMAKE_BUILD_TYPE=Release
 cmake --build coincfinder/build
-
-# build GUI
-cmake -S cpp -B cpp/build -G "Ninja" `
-  -DCMAKE_TOOLCHAIN_FILE=C:/Users/you/vcpkg/scripts/buildsystems/vcpkg.cmake `
-  -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON `
-  -DCOINCFINDER_CORE=$PWD/coincfinder/build/coincfinder_core.lib `
-  -DTDCBASE_LIB=$PWD/DLL_64bit/tdcbase.lib
+```
+3) Build GUI (Release):
+```cmd
+cmake -S cpp -B cpp/build -G "Ninja" -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_PREFIX_PATH="C:/Qt/6.10.1/msvc2022_64/lib/cmake" ^
+  -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON ^
+  -DCOINCFINDER_CORE="C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/coincfinder/build/coincfinder_core.lib" ^
+  -DTDCBASE_LIB="C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/DLL_64bit/tdcbase.lib"
 cmake --build cpp/build
-
-# runtime: ensure DLLs are found
-copy DLL_64bit\*.dll cpp\build\apps\
-cpp\build\apps\qlaib_gui.exe
+```
+4) Deploy Qt next to the exe:
+```cmd
+"C:/Qt/6.10.1/msvc2022_64/bin/windeployqt.exe" --release --compiler-runtime ^
+  C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/cpp/build/apps/qlaib_gui.exe
+copy /Y C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/DLL_64bit/*.dll ^
+  C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/cpp/build/apps/
+```
+5) Run:
+```cmd
+set QT_QPA_PLATFORM=windows
+set QT_QPA_PLATFORM_PLUGIN_PATH=C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/cpp/build/apps/platforms
+C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/cpp/build/apps/qlaib_gui.exe --mode=mock
 ```
 
 #### quTAG SDK on Windows
-- Use the vendor DLLs in `DLL_64bit/` (or `DLL_32bit/` if you target 32-bit): `tdcbase.dll`, `tdcbase.lib`, plus the dependent `libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`.
-- Point CMake to the import lib: `-DTDCBASE_LIB=C:/path/to/DLL_64bit/tdcbase.lib`.
-- Ensure `tdcbase.dll` and its dependencies are on `PATH` or next to the executable (copy the contents of `DLL_64bit/` into `cpp/build/apps/` after building).
-
-## Usage (C++ GUI)
-
-- **Live (default):** `./cpp/build/apps/qlaib_gui` (tries quTAG; falls back to mock if init fails)
-- **Replay BIN:** `./cpp/build/apps/qlaib_gui --mode=replay --replay-bin path/to/file.bin`
-- **Mock:** `./cpp/build/apps/qlaib_gui --mode=mock`
-- **Headless/offscreen:** add `QLAIB_HEADLESS=1` (useful on SSH/CI).
-- **Record BIN (quTAG):** click “Record BIN” in the GUI or run `./cpp/build/apps/qlaib_record_qudag out.bin 1000`.
-
-### GUI controls
-
-- **Pairs table:** edit label/chA/chB/delay; Add/Remove/Reset defaults; “Calibrate selected/all” runs coincfinder delay scan using the Histogram range/step.
-- **Histogram tab:** choose pair, set window/start/end/step (ps); click “Histogram” or the toolbar button (auto-switches to the tab).
-- **Plots:** tabs for Singles, Coincidences, Metrics; axes auto-extend in time; legend updates when pairs change.
-- **Spins:** Exposure (seconds); Coincidence window (ps).
-- **Export:** “Export CSV” writes all time-series; settings persist to `~/.config/.../qlaib_gui.json`.
-
-## Hardware requirements
-
-- QuTAG hardware + vendor SDK (`libtdcbase` on Linux, `tdcbase.dll/.lib` on Windows).
-- USB driver deps on Windows (bundled DLLs in `DLL_64bit/`).
-- For replay/mock modes, no hardware is needed.
+- Use the vendor DLLs in `DLL_64bit/` (`tdcbase.dll`, `tdcbase.lib`, plus `libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`).
+- Point CMake to the import lib: `-DTDCBASE_LIB=.../DLL_64bit/tdcbase.lib`.
+- Ensure `tdcbase.dll` and deps are beside the exe (copy `DLL_64bit/*.dll` into `cpp/build/apps/`).

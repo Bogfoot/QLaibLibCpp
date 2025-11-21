@@ -1,4 +1,7 @@
-cmake_minimum_required(VERSION 3.18)
-project(qlaiblib LANGUAGES CXX)
-
-add_subdirectory(coincfinder)
+cmake_minimum_required(VERSION 3.22)
+project(TestQt LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_PREFIX_PATH "C:/Qt/6.10.1/msvc2022_64/lib/cmake")
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+add_executable(testqt main.cpp)
+target_link_libraries(testqt PRIVATE Qt6::Widgets)
