@@ -384,7 +384,7 @@ void MainWindow::appendSample(const data::SampleBatch &batch) {
   const auto rescale = [](QChart *chart, QValueAxis *axY) {
     double maxY = 1.0;
     for (auto *s : chart->series()) {
-      for (const auto &p : static_cast<QLineSeries *>(s)->pointsVector())
+      for (const auto &p : static_cast<QLineSeries *>(s)->points())
         maxY = std::max(maxY, p.y());
     }
     axY->setRange(0.0, maxY * 1.2);
