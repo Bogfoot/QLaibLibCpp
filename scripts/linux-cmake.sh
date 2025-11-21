@@ -43,7 +43,7 @@ if [[ ! -f "$TDCBASE_LIB" ]]; then
   exit 1
 fi
 
-cmake -S cpp -B "$BUILD_DIR" -G Ninja \
+cmake -S cpp -B "$BUILD_DIR" \
   -DCMAKE_PREFIX_PATH="$QT_PREFIX" \
   -DQt6_DIR="$QT_DIR" \
   -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON \
