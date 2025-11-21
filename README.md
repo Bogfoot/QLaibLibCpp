@@ -70,8 +70,16 @@ QLAIB_REPLAY_BIN=./capture.bin ./cpp/build/apps/qlaib_gui  # replay BIN
 Prereqs: Visual Studio 2022 (or Build Tools), CMake ≥3.22, vcpkg, Qt6 base + charts, coincfinder built with MSVC, quTAG SDK DLLs (`DLL_64bit/`).
 
 ```powershell
-# assumes $env:VCPKG_ROOT is set
-vcpkg install qtbase qtcharts --triplet x64-windows
+# Option A: manifest mode (recommended, run in repo root)
+vcpkg new --application
+vcpkg add port qtbase
+vcpkg add port qtcharts
+vcpkg install --triplet x64-windows
+
+# Option B: classic install from vcpkg clone
+# cd C:\path\to\vcpkg
+# .\bootstrap-vcpkg.bat
+# .\vcpkg install qtbase qtcharts --triplet x64-windows
 
 # build coincfinder
 cmake -S coincfinder -B coincfinder/build -G "Ninja"

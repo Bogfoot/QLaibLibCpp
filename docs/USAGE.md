@@ -40,3 +40,4 @@
 - Build coincfinder: `cmake -S coincfinder -B coincfinder/build && cmake --build coincfinder/build`.
 - Configure with `-DCOINCFINDER_CORE=path\to\coincfinder_core.lib -DTDCBASE_LIB=path\to\tdcbase.lib`.
 - QuTAG SDK: use `DLL_64bit/tdcbase.lib` for linking; copy `DLL_64bit/tdcbase.dll` and its deps (`libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`) into the run folder or add that directory to `PATH` before launching the GUI.
+- If vcpkg is manifest-only, create a manifest in repo root: `vcpkg new --application`, `vcpkg add port qtbase`, `vcpkg add port qtcharts`, then `vcpkg install --triplet x64-windows`. Otherwise run installs from your vcpkg clone after `bootstrap-vcpkg.bat`.
