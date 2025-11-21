@@ -45,20 +45,50 @@ Once published to PyPI you can simply run `pip install qlaiblib` on any machine
 with those prerequisites. For developer builds, `python -m build` produces wheels
 in `dist/` that already include the compiled `coincfinder` extension.
 
-### C++/Qt GUI build (Linux example)
+### C++/Qt GUI build
+
+#### Linux (Ubuntu/Debian example)
+Dependencies: Qt6 (`qt6-base-dev`, `qt6-charts-dev`), CMake ≥3.22, C++20 compiler, coincfinder static lib.
 
 ```bash
-# Dependencies: Qt6 (qt6-base-dev, qt6-charts-dev), CMake ≥3.22, a C++20 compiler
+# build coincfinder core
+cmake -S coincfinder -B coincfinder/build -G Ninja
+cmake --build coincfinder/build
+
+# build GUI
 cmake -S cpp -B cpp/build -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON \
-      -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6
+      -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6 \
+      -DCOINCFINDER_CORE=$(pwd)/coincfinder/build/libcoincfinder_core.a
 cmake --build cpp/build
-# Run live quTAG
-QLAIB_USE_QUTAG=1 ./cpp/build/apps/qlaib_gui
-# Replay a BIN
-QLAIB_REPLAY_BIN=./capture.bin ./cpp/build/apps/qlaib_gui
+
+# run
+QLAIB_USE_QUTAG=1 ./cpp/build/apps/qlaib_gui           # live hardware
+QLAIB_REPLAY_BIN=./capture.bin ./cpp/build/apps/qlaib_gui  # replay BIN
 ```
 
-Windows: install Qt6 + Charts (e.g., via vcpkg `qtbase qtcharts`), build coincfinder (`cmake -S coincfinder -B coincfinder/build`), then pass `-DCOINCFINDER_CORE=path/to/coincfinder_core.lib` and `-DTDCBASE_LIB=path/to/tdcbase.lib` to CMake.
+#### Windows (MSVC + vcpkg example)
+Prereqs: Visual Studio 2022 (or Build Tools), CMake ≥3.22, vcpkg, Qt6 base + charts, coincfinder built with MSVC, quTAG SDK DLLs (`DLL_64bit/`).
+
+```powershell
+# assumes $env:VCPKG_ROOT is set
+vcpkg install qtbase qtcharts --triplet x64-windows
+
+# build coincfinder
+cmake -S coincfinder -B coincfinder/build -G "Ninja"
+cmake --build coincfinder/build
+
+# build GUI
+cmake -S cpp -B cpp/build -G "Ninja" `
+  -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake `
+  -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON `
+  -DCOINCFINDER_CORE=$PWD/coincfinder/build/coincfinder_core.lib `
+  -DTDCBASE_LIB=$PWD/DLL_64bit/tdcbase.lib
+cmake --build cpp/build
+
+# runtime: ensure DLLs are found
+copy DLL_64bit\*.dll cpp\build\apps\
+cpp\build\apps\qlaib_gui.exe
+```
 
 #### quTAG SDK on Windows
 - Use the vendor DLLs in `DLL_64bit/` (or `DLL_32bit/` if you target 32-bit): `tdcbase.dll`, `tdcbase.lib`, plus the dependent `libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`.
