@@ -31,14 +31,17 @@
 - Settings (pairs, coincidence window) persist between runs.
 
 ## Env vars
-- `QLAIB_USE_QUTAG=1` – use real hardware backend.
-- `QLAIB_REPLAY_BIN=<file>` – replay BIN.
 - `QLAIB_HEADLESS=1` – offscreen Qt platform (no X/Wayland).
 
 ## Windows notes
-- Install Qt6 + Charts (e.g., vcpkg `qtbase qtcharts`).
+- Install Qt6 + Charts (e.g., vcpkg `qtbase qtcharts`) in your own vcpkg clone (not the embedded VS copy).
 - Build coincfinder: `cmake -S coincfinder -B coincfinder/build && cmake --build coincfinder/build`.
 - Configure with `-DCOINCFINDER_CORE=path\to\coincfinder_core.lib -DTDCBASE_LIB=path\to\tdcbase.lib`.
 - QuTAG SDK: use `DLL_64bit/tdcbase.lib` for linking; copy `DLL_64bit/tdcbase.dll` and its deps (`libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`) into the run folder or add that directory to `PATH` before launching the GUI.
 - If vcpkg is manifest-only, create a manifest in repo root: `vcpkg new --application`, `vcpkg add port qtbase`, `vcpkg add port qtcharts`, then `vcpkg install --triplet x64-windows`. Otherwise run installs from your vcpkg clone after `bootstrap-vcpkg.bat`.
-- vcpkg may pull ~20–30 dependencies for Qt. To speed up, enable binary caching (`set VCPKG_FEATURE_FLAGS=manifests,binarycaching`) or install Qt via the official Qt online installer (select Qt 6.x MSVC 64-bit + Charts) and set `-DCMAKE_PREFIX_PATH="C:/Qt/6.x/msvc2019_64/lib/cmake"` in CMake.
+- PowerShell use with a vcpkg clone at `C:\Users\you\vcpkg`:
+  ```powershell
+  $env:VCPKG_ROOT = "C:\Users\you\vcpkg"
+  & "$env:VCPKG_ROOT\vcpkg.exe" install qtbase qtcharts --triplet x64-windows
+  ```
+- vcpkg may pull ~20–30 dependencies for Qt. To speed up, enable binary caching (`set VCPKG_FEATURE_FLAGS=manifests,binarycaching`) or install Qt via the official Qt online installer (select Qt 6.x MSVC 64-bit + Charts) and set `-DCMAKE_PREFIX_PATH="C:/Qt/6.x/msvc2019_64/lib/cmake"` in CMake. With vcpkg, point CMake at `installed\x64-windows\share\Qt6` or set `Qt6_DIR=...\share\Qt6\cmake`; ensure a space between CMake args on Windows.

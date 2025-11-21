@@ -43,19 +43,19 @@ cmake --build cpp/build
 ```
 
 #### Windows (MSVC + vcpkg example)
-Prereqs: Visual Studio 2022 (or Build Tools), CMake ≥3.22, vcpkg, Qt6 base + charts, coincfinder built with MSVC, quTAG SDK DLLs (`DLL_64bit/`).
+Prereqs: Visual Studio 2022 (or Build Tools), CMake ≥3.22, a standalone vcpkg clone with Qt6 base + charts installed, coincfinder built with MSVC, quTAG SDK DLLs (`DLL_64bit/`). Use your own vcpkg clone (e.g., `C:\Users\you\vcpkg`), not the embedded VS copy.
 
 ```powershell
-# Option A: manifest mode (recommended, run in repo root)
+# Option A: manifest mode (run in repo root of your solution)
 vcpkg new --application
 vcpkg add port qtbase
 vcpkg add port qtcharts
 vcpkg install --triplet x64-windows
 
-# Option B: classic install from vcpkg clone
-# cd C:\path\to\vcpkg
-# .\bootstrap-vcpkg.bat
-# .\vcpkg install qtbase qtcharts --triplet x64-windows
+# Option B: classic install from your vcpkg clone
+cd C:\Users\you\vcpkg
+.\bootstrap-vcpkg.bat
+.\vcpkg install qtbase qtcharts --triplet x64-windows
 
 # build coincfinder
 cmake -S coincfinder -B coincfinder/build -G "Ninja"
@@ -63,7 +63,7 @@ cmake --build coincfinder/build
 
 # build GUI
 cmake -S cpp -B cpp/build -G "Ninja" `
-  -DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake `
+  -DCMAKE_TOOLCHAIN_FILE=C:/Users/you/vcpkg/scripts/buildsystems/vcpkg.cmake `
   -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON `
   -DCOINCFINDER_CORE=$PWD/coincfinder/build/coincfinder_core.lib `
   -DTDCBASE_LIB=$PWD/DLL_64bit/tdcbase.lib
