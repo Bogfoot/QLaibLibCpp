@@ -1,8 +1,15 @@
 @echo off
 setlocal enabledelayedexpansion
 
-rem Adjust this to your vcpkg clone
-set VCPKG_ROOT=C:\Users\LjubljanaLab\Desktop\vcpkg
+rem Adjust this to your vcpkg clone (prefer standalone clone with Qt installed)
+if not defined VCPKG_ROOT set VCPKG_ROOT=C:\Users\LjubljanaLab\Desktop\vcpkg
+if not exist "%VCPKG_ROOT%\vcpkg.exe" (
+  set VCPKG_ROOT=%USERPROFILE%\vcpkg
+)
+if not exist "%VCPKG_ROOT%\vcpkg.exe" (
+  echo vcpkg.exe not found. Set VCPKG_ROOT to your clone where Qt is installed.
+  exit /b 1
+)
 set BUILD_DIR=cpp\build
 
 set TOOLCHAIN=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
