@@ -1,23 +1,22 @@
 @echo off
 setlocal enabledelayedexpansion
 
-rem Adjust this to your vcpkg clone (prefer standalone clone with Qt installed)
-if not defined VCPKG_ROOT set VCPKG_ROOT=C:\Users\LjubljanaLab\Desktop\vcpkg
-if not exist "%VCPKG_ROOT%\vcpkg.exe" (
-  set VCPKG_ROOT=%USERPROFILE%\vcpkg
-)
-if not exist "%VCPKG_ROOT%\vcpkg.exe" (
-  echo vcpkg.exe not found. Set VCPKG_ROOT to your clone where Qt is installed.
-  exit /b 1
-)
+rem Paths relative to repo root
+set REPO_ROOT=%~dp0..
+set VCPKG_ROOT=%REPO_ROOT%\..\vcpkg
 set BUILD_DIR=cpp\build
 
 set TOOLCHAIN=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
 set QT_PREFIX=%VCPKG_ROOT%\installed\x64-windows\share\Qt6
 set QT_DIR=%QT_PREFIX%\cmake
 
-set COINCFINDER_LIB=%CD%\coincfinder\build\coincfinder_core.lib
-set TDCBASE_LIB=%CD%\DLL_64bit\tdcbase.lib
+set COINCFINDER_LIB=%REPO_ROOT%\coincfinder\build\coincfinder_core.lib
+set TDCBASE_LIB=%REPO_ROOT%\DLL_64bit\tdcbase.lib
+
+if not exist "%VCPKG_ROOT%\vcpkg.exe" (
+  echo vcpkg.exe not found at %VCPKG_ROOT%. Adjust VCPKG_ROOT in scripts\win-cmake.bat.
+  exit /b 1
+)
 
 if not exist "%COINCFINDER_LIB%" (
   echo Missing coincfinder_core.lib at %COINCFINDER_LIB%
