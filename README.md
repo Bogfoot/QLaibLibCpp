@@ -1,27 +1,25 @@
 # QLaibLib
 ## Quantum Laibach Library
 
-A reorganized Python package that wraps the existing QuTAG 
-toolchain. QLaibLib exposes a clean API, plotting helpers, metrics
-(QBER, visibility, contrast), and a Tkinter-based live dashboard without needing
-a browser. Ready and lab friendly. :)
+A modular toolkit for quTAG-based photon counting. It now has two faces:
+- **Python package** (`qlaiblib/`): CLI (`qlaib`) plus plotting/metrics and legacy scripts.
+- **Native C++/Qt GUI** (`cpp/`): live singles/coincidence/metrics plots, configurable pairs, delay histograms, quTAG recording, and BIN replay.
 
-## Features
+## Features (Python)
 
-- **Singles acquisition**: capture singles per channel via the QuTAG hardware or
-  the mock backend for offline development.
-- **Coincidence pipeline**: calibrate per-pair delays, compute 2-fold or N-fold
-  coincidence rates, and estimate accidentals.
-- **Metrics**: built-in visibility (HV, DA, total), QBER, and CHSH S metrics
-  plugged into a registry so new observables can be added declaratively.
-- **Plotting**: Matplotlib helpers for singles, coincidences, and metric
-  summaries; reusable both in scripts and in the dashboard.
-- **Live dashboard**: Tkinter GUI with tabs for live time-series plots, delay
-  histograms, settings, and data/export tools. Supports keyboard shortcuts (1–6)
-  to switch plot layouts (including a CHSH view with all 16 coincidence pairs
-  and S±σ), per-pair contrast/heralding stats, histogram auto-refresh, and a
-  history buffer (default 500 points) with CSV/raw BIN export buttons.
-- **CLI**: `qlaib` entry point with `count`, `coincide`, and `live` commands.
+- **Singles & coincidences** via quTAG or mock backends.
+- **Metrics**: visibility, QBER, CHSH (Python side), export-ready.
+- **Plotting**: Matplotlib helpers and Tk dashboard.
+- **CLI**: `qlaib count|coincide|live|replay`.
+
+## Features (C++/Qt GUI)
+
+- **Live acquisition**: quTAG backend (polls `TDC_getLastTimestamps`) or BIN replay; mock for offline dev.
+- **Configurable pairs**: editable table (labels, chA/chB, delay ps), auto-delay calibration (coincfinder).
+- **Histograms**: delay scans per pair with configurable window/range/step.
+- **Recording**: start/stop BIN recording from GUI (quTAG) or via `qlaib_record_qudag` CLI.
+- **Export**: CSV of all time-series; settings persisted to config.
+- **Headless-friendly**: `QLAIB_HEADLESS=1` forces offscreen Qt.
 
 ## Installation
 
@@ -46,6 +44,42 @@ Installation requirements:
 Once published to PyPI you can simply run `pip install qlaiblib` on any machine
 with those prerequisites. For developer builds, `python -m build` produces wheels
 in `dist/` that already include the compiled `coincfinder` extension.
+
+### C++/Qt GUI build (Linux example)
+
+```bash
+# Dependencies: Qt6 (qt6-base-dev, qt6-charts-dev), CMake ≥3.22, a C++20 compiler
+cmake -S cpp -B cpp/build -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE_QUTAG=ON \
+      -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake/Qt6
+cmake --build cpp/build
+# Run live quTAG
+QLAIB_USE_QUTAG=1 ./cpp/build/apps/qlaib_gui
+# Replay a BIN
+QLAIB_REPLAY_BIN=./capture.bin ./cpp/build/apps/qlaib_gui
+```
+
+Windows: install Qt6 + Charts (e.g., via vcpkg `qtbase qtcharts`), build coincfinder (`cmake -S coincfinder -B coincfinder/build`), then pass `-DCOINCFINDER_CORE=path/to/coincfinder_core.lib` and `-DTDCBASE_LIB=path/to/tdcbase.lib` to CMake.
+
+#### quTAG SDK on Windows
+- Use the vendor DLLs in `DLL_64bit/` (or `DLL_32bit/` if you target 32-bit): `tdcbase.dll`, `tdcbase.lib`, plus the dependent `libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`.
+- Point CMake to the import lib: `-DTDCBASE_LIB=C:/path/to/DLL_64bit/tdcbase.lib`.
+- Ensure `tdcbase.dll` and its dependencies are on `PATH` or next to the executable (copy the contents of `DLL_64bit/` into `cpp/build/apps/` after building).
+
+## Usage (C++ GUI)
+
+- **Mock mode (default):** `./cpp/build/apps/qlaib_gui`
+- **BIN replay:** `QLAIB_REPLAY_BIN=/path/to/file.bin ./cpp/build/apps/qlaib_gui`
+- **Live quTAG:** `QLAIB_USE_QUTAG=1 ./cpp/build/apps/qlaib_gui`
+- **Headless/offscreen:** add `QLAIB_HEADLESS=1` (useful on SSH/CI).
+- **Record BIN (quTAG):** click “Record BIN” in the GUI or run `./cpp/build/apps/qlaib_record_qudag out.bin 1000`.
+
+### GUI controls
+
+- **Pairs table:** edit label/chA/chB/delay; Add/Remove/Reset defaults; “Calibrate selected/all” runs coincfinder delay scan using the Histogram range/step.
+- **Histogram tab:** choose pair, set window/start/end/step (ps); click “Histogram” or the toolbar button (auto-switches to the tab).
+- **Plots:** tabs for Singles, Coincidences, Metrics; axes auto-extend in time; legend updates when pairs change.
+- **Spins:** Exposure (seconds); Coincidence window (ps).
+- **Export:** “Export CSV” writes all time-series; settings persist to `~/.config/.../qlaib_gui.json`.
 
 ## Hardware requirements
 

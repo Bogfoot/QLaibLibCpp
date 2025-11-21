@@ -1,10 +1,10 @@
 # QLaibLib Architecture
 
-QLaibLib reorganizes the legacy scripts into a composable Python package focused on
-photon-counting experiments with the QuTAG time-tagger and the custom `coincfinder`
-engine.
+QLaibLib now has two layers:
+- **Python package**: CLI, metrics, plotting, Tk dashboard.
+- **C++/Qt GUI**: native live dashboard with quTAG/BIN backends and coincfinder-based processing.
 
-## Package layout
+## Python package layout
 
 ```
 qlaiblib/
@@ -40,6 +40,32 @@ qlaiblib/
 │   ├── __init__.py
 │   └── timing.py           # Convenience wrappers for timestamps/durations
 └── cli.py                  # Typer-based entry points (count, coincide, live)
+
+## C++ layer (cpp/)
+
+```
+cpp/
+ ├── include/qlaib/
+ │     ├── acquisition/      # IBackend + Mock, BinReplay, QuTAG backends
+ │     ├── data/             # SampleBatch, coincidence structs
+ │     ├── metrics/          # Metric interfaces and registry
+ │     └── ui/               # Qt MainWindow
+ ├── src/                    # backend + UI implementations
+ ├── apps/
+ │     ├── qlaib_gui.cpp     # Qt GUI entry
+ │     └── qlaib_record_qudag.cpp # headless BIN recorder
+ └── CMakeLists.txt          # CMake build (Qt6, coincfinder, optional quTAG)
+```
+
+### C++ dataflow
+
+- **Backends**: `MockBackend` (synthetic 8ch), `BinReplayBackend` (BIN → singles/timestamps), `QuTAGBackend` (polls `TDC_getLastTimestamps`, can record BIN via `TDC_writeTimestamps`).
+- **Coincidences**: computed in UI using coincfinder (`countCoincidencesWithDelay`, `findBestDelayPicoseconds`).
+- **GUI**: Qt Charts tabs for Singles, Coincidences, Metrics, Histogram; configurable pairs table; auto-delay calibration; CSV export; BIN record (quTAG only). Settings persisted to JSON config.
+
+### Notes
+- Build depends on Qt6 Core/Widgets/Charts and `coincfinder` static lib. QuTAG support links `libtdcbase` and is toggled with `QQL_ENABLE_QUTAG`.
+- Offscreen/headless supported via `QLAIB_HEADLESS=1` (sets `QT_QPA_PLATFORM=offscreen`).
 ```
 
 ## Design goals
