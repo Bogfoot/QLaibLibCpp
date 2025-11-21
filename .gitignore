@@ -30,6 +30,7 @@ coincfinder/build/
 
 # Repo-local files
 AGENTS.md
+qber_live_log.csv
 
 # Ignore Python package and scripts
 qlaiblib/
