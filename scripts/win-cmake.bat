@@ -12,12 +12,20 @@ for %%i in ("%REPO_ROOT%\..\vcpkg") do set VCPKG_ROOT=%%~fi
 
 set BUILD_DIR=%REPO_ROOT%\cpp\build
 set TOOLCHAIN=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
-rem Prefer manifest output under repo; fall back to global installed
-set QT_PREFIX=%REPO_ROOT%\vcpkg_installed\x64-windows\share\qt6
-set QT_DIR=%QT_PREFIX%\cmake
-if not exist "%QT_DIR%\Qt6Config.cmake" (
-  set QT_PREFIX=%VCPKG_ROOT%\installed\x64-windows\share\qt6
-  set QT_DIR=%QT_PREFIX%\cmake
+rem Auto-find Qt6Config.cmake (manifest under repo, or global installed)
+set QT_DIR=
+for /r "%REPO_ROOT%\vcpkg_installed" %%f in (Qt6Config.cmake) do (
+  if not defined QT_DIR set QT_DIR=%%~dpf
+)
+if not defined QT_DIR (
+  for /r "%VCPKG_ROOT%\installed" %%f in (Qt6Config.cmake) do (
+    if not defined QT_DIR set QT_DIR=%%~dpf
+  )
+)
+if defined QT_DIR (
+  for %%p in ("%QT_DIR%..") do set QT_PREFIX=%%~fp
+) else (
+  set QT_PREFIX=
 )
 set COINCFINDER_LIB=%REPO_ROOT%\coincfinder\build\coincfinder_core.lib
 set TDCBASE_LIB=%REPO_ROOT%\DLL_64bit\tdcbase.lib
@@ -29,8 +37,8 @@ if not exist "%VCPKG_ROOT%\vcpkg.exe" (
   echo vcpkg.exe not found at %VCPKG_ROOT%. Edit scripts\win-cmake.bat to point to your vcpkg clone.
   exit /b 1
 )
-if not exist "%QT_DIR%\Qt6Config.cmake" (
-  echo Qt6Config.cmake not found under %QT_DIR%. Make sure qtbase/qtcharts are installed in this vcpkg.
+if not defined QT_DIR (
+  echo Qt6Config.cmake not found in vcpkg_installed or vcpkg/installed. Run "vcpkg install --triplet x64-windows" from repo root to populate vcpkg_installed.
   exit /b 1
 )
 if not exist "%COINCFINDER_LIB%" (
