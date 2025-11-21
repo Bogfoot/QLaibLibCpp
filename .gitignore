@@ -37,5 +37,6 @@ Makefile
 CMakeCache.txt 
 cmake_install.cmake
 # Ignore Python package and scripts
+EPC/
 qlaiblib/
 *.py
