@@ -52,3 +52,8 @@ if(QQL_ENABLE_CHARTS)
     target_link_libraries(qlaibcpp PUBLIC Qt6::Charts)
     target_compile_definitions(qlaibcpp PUBLIC QQL_ENABLE_CHARTS=1)
 endif()
+
+# If a prebuilt coincfinder core is available, link it; otherwise we compiled Coincidences.cpp above.
+if(COINCFINDER_CORE)
+    target_link_libraries(qlaibcpp PUBLIC ${COINCFINDER_CORE})
+endif()
