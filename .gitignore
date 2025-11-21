@@ -24,6 +24,15 @@ coincfinder/build/
 *.lib
 *.exe
 
-# Logs
+# Data/logs
 *.log
+*.bin
+*.csv
+
+# Repo-local files
+AGENTS.md
+
+# Ignore Python code/data
+qlaiblib/
+/*.py
 *.bin
