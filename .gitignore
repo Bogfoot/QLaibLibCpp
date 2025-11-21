@@ -1,5 +1,3 @@
-AGENTS.md
-*.py
 # Build artifacts
 /cpp/build/
 /build/
@@ -28,12 +26,11 @@ coincfinder/build/
 *.log
 *.bin
 *.csv
+/2025-11-19_13_05_03_MDP_UVTP_exp_time_s_5.bin
 
 # Repo-local files
 AGENTS.md
 
-# Ignore Python code/data
+# Ignore Python package and scripts
 qlaiblib/
-/*.py
-*.bin
-/2025-11-19_13_05_03_MDP_UVTP_exp_time_s_5.bin
+*.py
