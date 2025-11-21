@@ -9,6 +9,7 @@ __pycache__/
 # Virtual environments
 .venv/
 env/
+examples/*.py
 
 # Qt/IDE artifacts
 .idea/
@@ -40,3 +41,4 @@ cmake_install.cmake
 EPC/
 qlaiblib/
 *.py
+
