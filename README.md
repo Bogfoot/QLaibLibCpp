@@ -1,16 +1,7 @@
 # QLaibLib
-## Quantum Laibach Library
+## Quantum Laibach Library (C++/Qt GUI)
 
-A modular toolkit for quTAG-based photon counting. It now has two faces:
-- **Python package** (`qlaiblib/`): CLI (`qlaib`) plus plotting/metrics and legacy scripts.
-- **Native C++/Qt GUI** (`cpp/`): live singles/coincidence/metrics plots, configurable pairs, delay histograms, quTAG recording, and BIN replay.
-
-## Features (Python)
-
-- **Singles & coincidences** via quTAG or mock backends.
-- **Metrics**: visibility, QBER, CHSH (Python side), export-ready.
-- **Plotting**: Matplotlib helpers and Tk dashboard.
-- **CLI**: `qlaib count|coincide|live|replay`.
+A modular toolkit for quTAG-based photon counting with a native C++/Qt GUI: live singles/coincidence plots, configurable pairs, delay histograms, quTAG recording, and BIN replay.
 
 ## Features (C++/Qt GUI)
 
@@ -25,10 +16,10 @@ A modular toolkit for quTAG-based photon counting. It now has two faces:
 
 Installation requirements:
 
-- `cmake>=3.18` and `ninja` (installed automatically by pip if missing, or install
-  system packages such as `sudo apt install cmake ninja-build` / Homebrew)
-- A C++20 compiler (Visual Studio Build Tools on Windows, `build-essential`/`clang`
-  on Linux/macOS)
+- CMake ≥3.22, Ninja or your chosen generator
+- C++20 compiler (MSVC 2022, clang, or gcc)
+- Qt6 (Core, Widgets, Charts)
+- coincfinder sources (bundled in `coincfinder/` and built as part of GUI)
 
 ### C++/Qt GUI build
 
@@ -47,8 +38,8 @@ cmake -S cpp -B cpp/build -DQQL_BUILD_GUI=ON -DQQL_ENABLE_CHARTS=ON -DQQL_ENABLE
 cmake --build cpp/build
 
 # run
-QLAIB_USE_QUTAG=1 ./cpp/build/apps/qlaib_gui           # live hardware
-QLAIB_REPLAY_BIN=./capture.bin ./cpp/build/apps/qlaib_gui  # replay BIN
+./cpp/build/apps/qlaib_gui                               # live hardware (fallback to mock)
+./cpp/build/apps/qlaib_gui --mode=replay --replay-bin ./capture.bin  # replay BIN
 ```
 
 #### Windows (MSVC + vcpkg example)
@@ -106,8 +97,6 @@ cpp\build\apps\qlaib_gui.exe
 
 ## Hardware requirements
 
-- QuTAG hardware with the `QuTAG_MC` Python bindings installed.
-- The C++ `coincfinder` extension (built automatically during `pip install` or
-  bundled in prebuilt wheels once published).
-- For live plotting, Tkinter must be available (ships with standard Python on
-  Windows/macOS/Linux).
+- QuTAG hardware + vendor SDK (`libtdcbase` on Linux, `tdcbase.dll/.lib` on Windows).
+- USB driver deps on Windows (bundled DLLs in `DLL_64bit/`).
+- For replay/mock modes, no hardware is needed.
