@@ -27,7 +27,8 @@ if defined QT_DIR (
 ) else (
   set QT_PREFIX=
 )
-set COINCFINDER_LIB=%REPO_ROOT%\coincfinder\build\libcoincfinder_core.lib
+set COINCFINDER_LIB=%REPO_ROOT%\coincfinder\build\coincfinder_core.lib
+if not exist "%COINCFINDER_LIB%" set COINCFINDER_LIB=%REPO_ROOT%\coincfinder\build\libcoincfinder_core.lib
 set TDCBASE_LIB=%REPO_ROOT%\DLL_64bit\tdcbase.lib
 
 echo REPO_ROOT=%REPO_ROOT%
