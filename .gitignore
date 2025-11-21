@@ -31,7 +31,11 @@ coincfinder/build/
 # Repo-local files
 AGENTS.md
 qber_live_log.csv
-
+pyproject.toml
+plotter_settings.json
+Makefile
+CMakeCache.txt 
+cmake_install.cmake
 # Ignore Python package and scripts
 qlaiblib/
 *.py
