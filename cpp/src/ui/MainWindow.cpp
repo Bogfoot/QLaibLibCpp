@@ -61,18 +61,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   cfg_.timestampBufferSize = 200000;
   cfg_.coincidenceWindowPs = 200000;
 
-  if (const char *bin = std::getenv("QLAIB_REPLAY_BIN")) {
-    cfg_.replayFile = bin;
-    cfg_.useMock = false;
-    backend_ = std::make_unique<acquisition::BinReplayBackend>();
-    statusBar()->showMessage(QString("Replay: %1").arg(bin));
-  } else if (std::getenv("QLAIB_USE_QUTAG")) {
-    cfg_.useMock = false;
-    backend_ = std::make_unique<acquisition::QuTAGBackend>();
-    statusBar()->showMessage("quTAG live");
-  } else {
+  // Backend selection via CLI mode
+  if (mode_.compare("replay", Qt::CaseInsensitive) == 0) {
+    cfg_.replayFile = replayFile_.toStdString();
+    if (cfg_.replayFile.empty()) {
+      statusBar()->showMessage("Replay mode requires --replay-bin");
+      backend_ = std::make_unique<acquisition::MockBackend>();
+    } else {
+      cfg_.useMock = false;
+      backend_ = std::make_unique<acquisition::BinReplayBackend>();
+      statusBar()->showMessage(QString("Replay: %1").arg(replayFile_));
+    }
+  } else if (mode_.compare("mock", Qt::CaseInsensitive) == 0) {
     backend_ = std::make_unique<acquisition::MockBackend>();
     statusBar()->showMessage("Mock mode");
+  } else { // live (default)
+    backend_ = std::make_unique<acquisition::QuTAGBackend>();
+    statusBar()->showMessage("quTAG live (fallback to mock if init fails)");
   }
   qDebug("MainWindow: backend selected");
 
@@ -274,8 +279,9 @@ void MainWindow::setupHistogramTab() {
 
 void MainWindow::start() {
   if (!backend_->start(cfg_)) {
-    statusBar()->showMessage("Backend failed to start");
-    return;
+    statusBar()->showMessage("Backend failed to start; switching to mock");
+    backend_ = std::make_unique<acquisition::MockBackend>();
+    backend_->start(cfg_);
   }
   t0_ms_ = QDateTime::currentMSecsSinceEpoch();
   timer_.start();

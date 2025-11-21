@@ -44,6 +44,10 @@ public:
   void start();
   void stop();
 
+  // CLI hooks
+  void setMode(const QString &mode) { mode_ = mode; }
+  void setReplayFile(const QString &file) { replayFile_ = file; }
+
 private slots:
   void tick();
   void computeHistogram();
@@ -75,6 +79,8 @@ private:
   QTimer timer_;
   std::optional<data::SampleBatch> latestBatch_;
   std::vector<PairSpec> pairs_;
+  QString mode_{"live"};
+  QString replayFile_;
   double histogramWindowPs_{200.0};
   double coincidenceWindowPs_{200.0};
 

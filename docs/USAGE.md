@@ -1,9 +1,9 @@
 # QLaibLib Usage (C++ Qt GUI)
 
 ## Run modes
-- Mock (default): `./cpp/build/apps/qlaib_gui`
-- BIN replay: `QLAIB_REPLAY_BIN=/path/to/file.bin ./cpp/build/apps/qlaib_gui`
-- Live quTAG: `QLAIB_USE_QUTAG=1 ./cpp/build/apps/qlaib_gui`
+- Live (default): `./cpp/build/apps/qlaib_gui` (tries quTAG, falls back to mock)
+- BIN replay: `./cpp/build/apps/qlaib_gui --mode=replay --replay-bin /path/to/file.bin`
+- Mock: `./cpp/build/apps/qlaib_gui --mode=mock`
 - Headless: add `QLAIB_HEADLESS=1` (forces Qt offscreen if no display).
 - Record BIN (quTAG): `./cpp/build/apps/qlaib_record_qudag out.bin 1000` or the “Record BIN” button.
 
