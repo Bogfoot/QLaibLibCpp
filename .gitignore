@@ -2,6 +2,8 @@
 /cpp/build/
 /build/
 /dist/
+docs/doxygen/
+docs/doxygen/
 *.egg-info
 *.pyc
 __pycache__/
@@ -41,4 +43,3 @@ cmake_install.cmake
 EPC/
 qlaiblib/
 *.py
-
