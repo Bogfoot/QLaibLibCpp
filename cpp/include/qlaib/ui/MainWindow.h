@@ -59,7 +59,7 @@ public:
 
 private slots:
   void tick();
-  void computeHistogram();
+  void computeHistogram(bool showStatus = true);
   void exportCsv();
   void toggleRecording();
   void addPair();

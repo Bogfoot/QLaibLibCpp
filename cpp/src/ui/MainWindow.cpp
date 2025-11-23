@@ -147,7 +147,7 @@ void MainWindow::setupUi() {
 
   connect(btnExport, &QPushButton::clicked, this, &MainWindow::exportCsv);
   connect(histBtn_, &QPushButton::clicked, this, [this]() {
-    computeHistogram();
+    computeHistogram(true);
     if (histTab_)
       tabs_->setCurrentWidget(histTab_);
   });
@@ -156,6 +156,16 @@ void MainWindow::setupUi() {
   connect(exposureSpin_, &QDoubleSpinBox::editingFinished, this, [this]() {
     cfg_.exposureSeconds = exposureSpin_->value();
     saveConfig();
+    // Clear plots so new exposure starts fresh
+#ifdef QQL_ENABLE_CHARTS
+    for (auto &kv : singlesSeries_)
+      kv.second->clear();
+    for (auto &kv : coincSeries_)
+      kv.second->clear();
+    for (auto &kv : metricSeries_)
+      kv.second->clear();
+    histChart_->removeAllSeries();
+#endif
     restartBackend();
   });
   connect(coincWindowSpin_, qOverload<double>(&QDoubleSpinBox::valueChanged),
@@ -242,16 +252,20 @@ void MainWindow::setupHistogramTab() {
   auto *cl = new QHBoxLayout(controls);
   pairBox_ = new QComboBox(controls);
   windowSpin_ = new QDoubleSpinBox(controls);
-  windowSpin_->setRange(10.0, 10000.0);
+  windowSpin_->setRange(1.0, 1e12);
+  windowSpin_->setDecimals(0);
   windowSpin_->setValue(200.0);
   startSpin_ = new QDoubleSpinBox(controls);
-  startSpin_->setRange(-20000.0, 0.0);
+  startSpin_->setRange(-1e12, 1e12);
+  startSpin_->setDecimals(0);
   startSpin_->setValue(-8000.0);
   endSpin_ = new QDoubleSpinBox(controls);
-  endSpin_->setRange(0.0, 20000.0);
+  endSpin_->setRange(-1e12, 1e12);
+  endSpin_->setDecimals(0);
   endSpin_->setValue(8000.0);
   stepSpin_ = new QDoubleSpinBox(controls);
-  stepSpin_->setRange(1.0, 2000.0);
+  stepSpin_->setRange(1.0, 1e9);
+  stepSpin_->setDecimals(0);
   stepSpin_->setValue(50.0);
   cl->addWidget(new QLabel("Pair:", controls));
   cl->addWidget(pairBox_);
@@ -344,6 +358,9 @@ void MainWindow::tick() {
   saveConfig();
   appendSample(*batch);
   refreshPairList(*batch);
+  if (tabs_ && histTab_ && tabs_->currentWidget() == histTab_ && latestBatch_) {
+    computeHistogram(false);
+  }
 }
 
 void MainWindow::appendSample(const data::SampleBatch &batch) {
@@ -368,6 +385,9 @@ void MainWindow::appendSample(const data::SampleBatch &batch) {
       map[name] = series;
     }
     series->append(t, value);
+    series->setName(QString("%1 (%2)")
+                        .arg(name)
+                        .arg(value, 0, value < 10 ? 'f' : 'f', value < 10 ? 2 : 0));
     trimSeries(series, historyLen_);
   };
 
@@ -470,10 +490,11 @@ void MainWindow::refreshPairList(const data::SampleBatch &batch) {
 #endif
 }
 
-void MainWindow::computeHistogram() {
+void MainWindow::computeHistogram(bool showStatus) {
 #ifdef QQL_ENABLE_CHARTS
   if (!latestBatch_) {
-    statusBar()->showMessage("No data yet; start acquisition first.");
+    if (showStatus)
+      statusBar()->showMessage("No data yet; start acquisition first.");
     return;
   }
   QString pair = pairBox_->currentText();
@@ -765,10 +786,7 @@ void MainWindow::saveConfig() {
     arr.append(o);
   }
   root["pairs"] = arr;
-  auto path =
-      QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-  QDir().mkpath(path);
-  QFile f(path + "/qlaib_gui.json");
+  QFile f(QCoreApplication::applicationDirPath() + "/qlaib_gui.json");
   if (f.open(QIODevice::WriteOnly))
     f.write(QJsonDocument(root).toJson());
 }
@@ -776,13 +794,11 @@ void MainWindow::saveConfig() {
 void MainWindow::loadConfig() {
   qDebug("loadConfig: begin");
   resetPairs();
-  auto path =
-      QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +
-      "/qlaib_gui.json";
+  QString path = QCoreApplication::applicationDirPath() + "/qlaib_gui.json";
   QFile f(path);
   if (!f.open(QIODevice::ReadOnly))
   {
-    qDebug("loadConfig: no config file");
+    qDebug("loadConfig: no config file at %s", qPrintable(path));
     return;
   }
   auto doc = QJsonDocument::fromJson(f.readAll());
