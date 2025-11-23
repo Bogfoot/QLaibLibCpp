@@ -8,9 +8,10 @@
   "configurePresets": [
     {
       "name": "win-msvc-release",
-      "displayName": "Windows MSVC (Ninja) Release + Qt Charts + quTAG",
+      "displayName": "Windows MSVC (VS Generator) Release + Qt Charts + quTAG",
       "description": "Assumes Qt at C:/Qt/6.10.1/msvc2022_64; override with QT_ROOT or CMAKE_PREFIX_PATH.",
-      "generator": "Ninja",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
