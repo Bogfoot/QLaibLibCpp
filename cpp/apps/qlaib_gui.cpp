@@ -7,11 +7,14 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-  // Allow headless runs without X/Wayland: set QLAIB_HEADLESS=1 or unset DISPLAY.
+  std::cerr << "[qlaib_gui] argv[0]=" << (argv && argv[0] ? argv[0] : "<null>") << "\n";
+#ifdef Q_OS_UNIX
+  // Allow headless runs without X/Wayland on Unix: set QLAIB_HEADLESS=1 or unset DISPLAY.
   auto env = QProcessEnvironment::systemEnvironment();
   if (env.contains("QLAIB_HEADLESS") || (!env.contains("DISPLAY") && !env.contains("WAYLAND_DISPLAY"))) {
     qputenv("QT_QPA_PLATFORM", QByteArray("offscreen"));
   }
+#endif
   std::cerr << "[qlaib_gui] Starting QApplication\n";
   QApplication app(argc, argv);
 
