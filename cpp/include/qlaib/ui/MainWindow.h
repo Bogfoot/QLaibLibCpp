@@ -30,13 +30,22 @@ QT_END_NAMESPACE
 
 namespace qlaib::ui {
 
+/// User-configurable coincidence pair (channel A/B and relative delay).
 struct PairSpec {
-  QString label;
-  int chA;
-  int chB;
-  long long delayPs;
+  QString label;    ///< Display name shown in tables/plots.
+  int chA;          ///< 1-based channel index A.
+  int chB;          ///< 1-based channel index B.
+  long long delayPs;///< Optional calibrated delay (picoseconds).
 };
 
+/**
+ * @brief Main GUI window: drives backends and renders live metrics/plots.
+ *
+ * Responsibilities:
+ *  - select and start the desired backend (live quTAG, replay, mock)
+ *  - pull batches on a timer and update charts/tables
+ *  - manage coincidence pairs and calibration shortcuts
+ */
 class MainWindow : public QMainWindow {
   Q_OBJECT
 public:

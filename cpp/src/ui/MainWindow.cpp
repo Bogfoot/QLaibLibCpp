@@ -299,10 +299,10 @@ void MainWindow::start() {
   }();
 
   qInfo("MainWindow::start backend=%s mode=%s replay=%s useMock=%d "
-        "exposure=%.3fs buf=%d coincWin=%lld",
+        "exposure=%.3fs buf=%d coincWin=%lld history=%d",
         backendName, qPrintable(mode_), qPrintable(replayFile_),
         cfg_.useMock ? 1 : 0, cfg_.exposureSeconds, cfg_.timestampBufferSize,
-        static_cast<long long>(cfg_.coincidenceWindowPs));
+        static_cast<long long>(cfg_.coincidenceWindowPs), historyLen_);
 
   const bool started = backend_->start(cfg_);
   if (!started) {
