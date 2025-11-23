@@ -3,7 +3,9 @@
 #include "ReadCSV.h"
 #include "qlaib/acquisition/BinReplayBackend.h"
 #include "qlaib/acquisition/MockBackend.h"
+#ifdef QQL_ENABLE_QUTAG
 #include "qlaib/acquisition/QuTAGBackend.h"
+#endif
 #include <vector>
 
 // Forward declare to placate some compilers where the header isn't picked up.
@@ -77,8 +79,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     backend_ = std::make_unique<acquisition::MockBackend>();
     statusBar()->showMessage("Mock mode");
   } else { // live (default)
+#ifdef QQL_ENABLE_QUTAG
     backend_ = std::make_unique<acquisition::QuTAGBackend>();
     statusBar()->showMessage("quTAG live (fallback to mock if init fails)");
+#else
+    backend_ = std::make_unique<acquisition::MockBackend>();
+    statusBar()->showMessage("Live quTAG disabled at build; using Mock backend");
+#endif
   }
   qDebug("MainWindow: backend selected");
 
@@ -284,8 +291,10 @@ void MainWindow::start() {
       return "MockBackend";
     if (dynamic_cast<acquisition::BinReplayBackend *>(backend_.get()))
       return "BinReplayBackend";
+#ifdef QQL_ENABLE_QUTAG
     if (dynamic_cast<acquisition::QuTAGBackend *>(backend_.get()))
       return "QuTAGBackend";
+#endif
     return "UnknownBackend";
   }();
 

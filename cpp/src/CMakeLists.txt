@@ -16,11 +16,11 @@ add_library(qlaibcpp STATIC ${QQL_SRC})
 target_include_directories(qlaibcpp PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
     ${CMAKE_SOURCE_DIR}/../coincfinder/include
+    ${CMAKE_SOURCE_DIR}/../QuTAGC/inc    # quTAG headers always available
 )
 
 if(QQL_ENABLE_QUTAG)
     target_compile_definitions(qlaibcpp PUBLIC QQL_ENABLE_QUTAG)
-    target_include_directories(qlaibcpp PUBLIC ${CMAKE_SOURCE_DIR}/../QuTAGC/inc)
     # Look for libtdcbase (preferred in repo root/DLL_64bit/DLL_32bit or QuTAGC/lib)
     find_library(TDCBASE_LIB NAMES tdcbase libtdcbase tdcbase.lib PATHS
         ${CMAKE_SOURCE_DIR}/..                # repository root (dll/so beside checkout)
