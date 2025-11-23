@@ -155,6 +155,7 @@ void MainWindow::setupUi() {
           &MainWindow::toggleRecording);
   connect(exposureSpin_, &QDoubleSpinBox::editingFinished, this, [this]() {
     cfg_.exposureSeconds = exposureSpin_->value();
+    qInfo("Exposure changed to %.3f s", cfg_.exposureSeconds);
     saveConfig();
     // Clear plots so new exposure starts fresh
 #ifdef QQL_ENABLE_CHARTS
