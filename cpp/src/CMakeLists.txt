@@ -3,7 +3,6 @@ set(QQL_SRC
     acquisition/BinReplayBackend.cpp
     metrics/Registry.cpp
     ui/MainWindow.cpp
-    ${CMAKE_SOURCE_DIR}/../coincfinder/src/Coincidences.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../include/qlaib/ui/MainWindow.h
 )
 
@@ -18,6 +17,25 @@ target_include_directories(qlaibcpp PUBLIC
     ${CMAKE_SOURCE_DIR}/../coincfinder/include
     ${CMAKE_SOURCE_DIR}/../QuTAGC/inc    # quTAG headers always available
 )
+
+# Coincfinder integration: prefer built target, else add subdir, else compile single file
+set(_coinc_linked FALSE)
+if(COINCFINDER_CORE)
+    message(STATUS "Using COINCFINDER_CORE override: ${COINCFINDER_CORE}")
+    target_link_libraries(qlaibcpp PUBLIC ${COINCFINDER_CORE})
+    set(_coinc_linked TRUE)
+elseif(TARGET coincfinder_core)
+    message(STATUS "Using existing coincfinder_core target")
+    target_link_libraries(qlaibcpp PUBLIC coincfinder_core)
+    set(_coinc_linked TRUE)
+elseif(EXISTS ${CMAKE_SOURCE_DIR}/../coincfinder/CMakeLists.txt)
+    message(STATUS "Adding coincfinder subdirectory")
+    add_subdirectory(${CMAKE_SOURCE_DIR}/../coincfinder ${CMAKE_BINARY_DIR}/coincfinder EXCLUDE_FROM_ALL)
+    if(TARGET coincfinder_core)
+        target_link_libraries(qlaibcpp PUBLIC coincfinder_core)
+        set(_coinc_linked TRUE)
+    endif()
+endif()
 
 if(QQL_ENABLE_QUTAG)
     target_compile_definitions(qlaibcpp PUBLIC QQL_ENABLE_QUTAG)
@@ -57,6 +75,12 @@ if(QQL_ENABLE_CHARTS)
 endif()
 
 # If a prebuilt coincfinder core is available, link it; otherwise we compiled Coincidences.cpp above.
-if(COINCFINDER_CORE)
-    target_link_libraries(qlaibcpp PUBLIC ${COINCFINDER_CORE})
+# Allow explicit override of coincfinder core static lib path
+if(NOT _coinc_linked)
+    # Fallback: compile core source directly if no library target is available
+    target_sources(qlaibcpp PRIVATE
+        ${CMAKE_SOURCE_DIR}/../coincfinder/src/Coincidences.cpp
+        ${CMAKE_SOURCE_DIR}/../coincfinder/src/ReadCSV.cpp
+        ${CMAKE_SOURCE_DIR}/../coincfinder/src/RollingSingles.cpp
+    )
 endif()

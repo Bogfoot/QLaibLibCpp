@@ -34,7 +34,8 @@
     },
     {
       "name": "linux-release",
-      "displayName": "Linux Release (Ninja)",
+      "displayName": "Linux Release (Makefiles)",
+      "generator": "Unix Makefiles",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",

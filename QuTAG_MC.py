@@ -1,9 +1,9 @@
 # quTAG MC (Multi Channel) Python Wrapper of time-to-digital library tdcbase.dll
-
-
+#
+#
 # Author: qutools GmbH
 # Last edited: Mai 2022
-
+#
 # Tested with python 3.7 (32bit & 64bit), Windows 10 (64bit)
 #
 # This is demo code. Use at your own risk. No warranties.
