@@ -330,6 +330,17 @@ void MainWindow::start() {
   t0_ms_ = QDateTime::currentMSecsSinceEpoch();
   timer_.setInterval(computePollIntervalMs());
   timer_.start();
+
+#ifdef QQL_ENABLE_CHARTS
+  // Reset cumulative series for a fresh exposure window
+  for (auto &kv : singlesSeries_)
+    kv.second->clear();
+  for (auto &kv : coincSeries_)
+    kv.second->clear();
+  for (auto &kv : metricSeries_)
+    kv.second->clear();
+  histChart_->removeAllSeries();
+#endif
 }
 
 void MainWindow::stop() {
@@ -369,8 +380,10 @@ void MainWindow::appendSample(const data::SampleBatch &batch) {
   double t = (now_ms - t0_ms_) / 1000.0;
 
   const auto trimSeries = [](QLineSeries *s, int maxPts) {
-    Q_UNUSED(s);
-    Q_UNUSED(maxPts);
+    if (maxPts <= 0)
+      return;
+    while (s->count() > maxPts)
+      s->remove(0);
   };
 
   auto updateSeries = [&](SeriesMap &map, QChart *chart, QValueAxis *axX,

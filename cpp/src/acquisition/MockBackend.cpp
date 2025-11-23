@@ -40,6 +40,8 @@ std::optional<data::SampleBatch> MockBackend::nextBatch() {
     std::sort(batch.timestamps_ps[ch].begin(), batch.timestamps_ps[ch].end());
   }
 
+  // Per-channel singles already reflect the current exposure only; keep as-is.
+
   batch.coincidences = {
       {"HV", static_cast<std::uint64_t>(batch.singles[0] * 0.15)},
       {"DA", static_cast<std::uint64_t>(batch.singles[1] * 0.12)},
