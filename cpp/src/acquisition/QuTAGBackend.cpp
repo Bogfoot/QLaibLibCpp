@@ -28,6 +28,7 @@ bool QuTAGBackend::start(const BackendConfig &config) {
   if (rc != TDC_Ok) {
     std::cerr << "TDC_setExposureTime failed: " << TDC_perror(rc) << "\n";
   }
+  std::cerr << "[QuTAG] exposure set to " << exposureMs_ << " ms\n";
 
   // Enable first 8 channels (no dedicated start)
   rc = TDC_enableChannels(false, kDefaultChannelMask);
@@ -76,6 +77,10 @@ std::optional<data::SampleBatch> QuTAGBackend::nextBatch() {
   }
   if (valid <= 0)
     return std::nullopt;
+  std::cerr << "[QuTAG] exposureMs=" << exposureMs_ << " valid_ts=" << valid
+            << " bufferSize=" << bufferSize_ << "\n";
+  if (valid >= bufferSize_)
+    std::cerr << "[QuTAG] WARNING: buffer possibly saturated; counts may be clipped\n";
 
   // Bucket by channel (1-based external)
   std::map<int, std::vector<long long>> perChannel;
