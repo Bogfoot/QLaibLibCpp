@@ -110,8 +110,6 @@ void MainWindow::setupUi() {
   // Controls bar
   auto *controls = new QWidget(central);
   auto *cl = new QHBoxLayout(controls);
-  auto *btnStart = new QPushButton("Start", controls);
-  auto *btnStop = new QPushButton("Stop", controls);
   auto *btnExport = new QPushButton("Export CSV", controls);
   exposureSpin_ = new QDoubleSpinBox(controls);
   exposureSpin_->setRange(0.05, 60.0);
@@ -126,9 +124,6 @@ void MainWindow::setupUi() {
   histBtn_ = new QPushButton("Histogram", controls);
   recordBtn_ = new QPushButton("Record BIN", controls);
 
-  cl->addWidget(btnStart);
-  cl->addWidget(btnStop);
-  cl->addSpacing(8);
   cl->addWidget(lblExp);
   cl->addWidget(exposureSpin_);
   cl->addSpacing(12);
@@ -150,8 +145,6 @@ void MainWindow::setupUi() {
   setCentralWidget(central);
   qDebug("setupUi: end");
 
-  connect(btnStart, &QPushButton::clicked, this, &MainWindow::start);
-  connect(btnStop, &QPushButton::clicked, this, &MainWindow::stop);
   connect(btnExport, &QPushButton::clicked, this, &MainWindow::exportCsv);
   connect(histBtn_, &QPushButton::clicked, this, [this]() {
     computeHistogram();
@@ -160,8 +153,11 @@ void MainWindow::setupUi() {
   });
   connect(recordBtn_, &QPushButton::clicked, this,
           &MainWindow::toggleRecording);
-  connect(exposureSpin_, qOverload<double>(&QDoubleSpinBox::valueChanged), this,
-          [this](double v) { cfg_.exposureSeconds = v; });
+  connect(exposureSpin_, &QDoubleSpinBox::editingFinished, this, [this]() {
+    cfg_.exposureSeconds = exposureSpin_->value();
+    saveConfig();
+    restartBackend();
+  });
   connect(coincWindowSpin_, qOverload<double>(&QDoubleSpinBox::valueChanged),
           this, [this](double v) {
             coincidenceWindowPs_ = v;
@@ -326,6 +322,11 @@ void MainWindow::stop() {
   backend_->stop();
 }
 
+void MainWindow::restartBackend() {
+  stop();
+  start();
+}
+
 void MainWindow::tick() {
   auto batch = backend_->nextBatch();
   if (!batch)
@@ -442,16 +443,23 @@ void MainWindow::appendSample(const data::SampleBatch &batch) {
 
 void MainWindow::refreshPairList(const data::SampleBatch &batch) {
 #ifdef QQL_ENABLE_CHARTS
-  QString current = pairBox_ ? pairBox_->currentText() : QString();
-  pairBox_->clear();
-  for (const auto &p : pairs_) {
-    pairBox_->addItem(p.label);
+  if (!pairBox_)
+    return;
+  QStringList labels;
+  labels.reserve(static_cast<int>(pairs_.size()));
+  for (const auto &p : pairs_)
+    labels << p.label;
+  if (labels != pairLabelsCache_) {
+    QString current = pairBox_->currentText();
+    pairBox_->clear();
+    pairBox_->addItems(labels);
+    int idx = pairBox_->findText(current);
+    if (idx >= 0)
+      pairBox_->setCurrentIndex(idx);
+    pairLabelsCache_ = labels;
+    refreshPairsTable();
   }
-  int idx = pairBox_->findText(current);
-  if (idx >= 0)
-    pairBox_->setCurrentIndex(idx);
 #endif
-  refreshPairsTable();
 }
 
 void MainWindow::computeHistogram() {

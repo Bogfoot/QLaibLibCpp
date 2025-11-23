@@ -76,6 +76,7 @@ private:
   void setupPairsUI();
   void connectShortcut(Qt::Key key, std::function<void()> slot);
 #endif
+  void restartBackend();
   void appendSample(const data::SampleBatch &batch);
   void refreshPairList(const data::SampleBatch &batch);
   void refreshPairsTable();
@@ -124,6 +125,7 @@ private:
   QPushButton *histBtn_{nullptr};
   QPushButton *recordBtn_{nullptr};
   bool fillingPairsTable_{false};
+  QStringList pairLabelsCache_;
   std::unordered_map<QString, QLineSeries *> singlesSeries_;
   std::unordered_map<QString, QLineSeries *> coincSeries_;
   std::unordered_map<QString, QLineSeries *> metricSeries_;
