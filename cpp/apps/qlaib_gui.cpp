@@ -8,7 +8,14 @@
 
 int main(int argc, char **argv) {
   std::cerr << "[qlaib_gui] argv[0]=" << (argv && argv[0] ? argv[0] : "<null>") << "\n";
-#ifdef Q_OS_UNIX
+#ifdef Q_OS_WIN
+  // On Windows, force the platform to "windows" to avoid inherited offscreen values.
+  const QByteArray current = qgetenv("QT_QPA_PLATFORM");
+  if (!current.isEmpty())
+    std::cerr << "[qlaib_gui] existing QT_QPA_PLATFORM=" << current.constData() << "\n";
+  qputenv("QT_QPA_PLATFORM", QByteArray("windows"));
+  std::cerr << "[qlaib_gui] forcing QT_QPA_PLATFORM=windows\n";
+#else
   // Allow headless runs without X/Wayland on Unix: set QLAIB_HEADLESS=1 or unset DISPLAY.
   auto env = QProcessEnvironment::systemEnvironment();
   if (env.contains("QLAIB_HEADLESS") || (!env.contains("DISPLAY") && !env.contains("WAYLAND_DISPLAY"))) {
