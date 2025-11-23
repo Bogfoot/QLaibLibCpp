@@ -23,7 +23,7 @@ struct BackendConfig {
   /// Coincidence window in picoseconds for coincidence counting.
   long long coincidenceWindowPs{200000}; // 200 ps default
   /// Maximum timestamp buffer length for streaming (live quTAG).
-  int timestampBufferSize{200000};
+  int timestampBufferSize{50000000}; // default 50M to avoid saturation
 };
 
 class IBackend {

@@ -37,13 +37,17 @@ bool QuTAGBackend::start(const BackendConfig &config) {
   }
 
   // Timestamp buffer for streaming
-  bufferSize_ = std::clamp(config.timestampBufferSize, 1000, 1'000'000);
+  int suggested =
+      static_cast<int>(std::round(config.exposureSeconds * 500000.0)); // ~0.5M/s
+  bufferSize_ = std::max(config.timestampBufferSize, suggested);
+  bufferSize_ = std::clamp(bufferSize_, 1000, 50'000'000);
   coincWindowPs_ = config.coincidenceWindowPs;
   rc = TDC_setTimestampBufferSize(bufferSize_);
   if (rc != TDC_Ok) {
     std::cerr << "TDC_setTimestampBufferSize failed: " << TDC_perror(rc)
               << "\n";
   }
+  std::cerr << "[QuTAG] buffer size set to " << bufferSize_ << " samples\n";
   tsBuffer_.resize(static_cast<size_t>(bufferSize_));
   chBuffer_.resize(static_cast<size_t>(bufferSize_));
 
