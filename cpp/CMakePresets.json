@@ -14,13 +14,10 @@
       "architecture": "x64",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_PREFIX_PATH": "$env{QT_ROOT}/lib/cmake",
         "QQL_BUILD_GUI": "ON",
         "QQL_ENABLE_CHARTS": "ON",
-        "QQL_ENABLE_QUTAG": "ON",
-        "COINCFINDER_CORE": "${sourceDir}/../coincfinder/build/coincfinder_core.lib",
-        "TDCBASE_LIB": "${sourceDir}/../DLL_64bit/tdcbase.lib"
+        "QQL_ENABLE_QUTAG": "ON"
       },
       "environment": {
         "QT_ROOT": "C:/Qt/6.10.1/msvc2022_64"
@@ -49,7 +46,8 @@
   "buildPresets": [
     {
       "name": "win-msvc-release",
-      "configurePreset": "win-msvc-release"
+      "configurePreset": "win-msvc-release",
+      "configuration": "Release"
     },
     {
       "name": "linux-release",
