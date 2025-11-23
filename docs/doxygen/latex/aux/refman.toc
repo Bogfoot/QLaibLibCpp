@@ -1,0 +1,201 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}QLaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib Architecture (C++/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Qt)}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Layout (cpp/)}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Dataflow}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Build dependencies}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Runtime}{2}{section.1.4}%
+\contentsline {chapter}{\numberline {2}QLaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib Usage (C++ Qt GUI)}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Run modes}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Controls}{3}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Pairs}{3}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Histogram}{3}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Plots}{4}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Export}{4}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Env vars}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Windows notes}{4}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Namespace Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Namespace List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Hierarchical Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Class Hierarchy}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Class Index}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Class List}{9}{section.5.1}%
+\contentsline {chapter}{\numberline {6}File Index}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}File List}{11}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Namespace Documentation}{13}{chapter.7}%
+\contentsline {section}{\numberline {7.1}qlaib Namespace Reference}{13}{section.7.1}%
+\contentsline {section}{\numberline {7.2}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition Namespace Reference}{13}{section.7.2}%
+\contentsline {section}{\numberline {7.3}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::anonymous\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}namespace\{Qu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TAGBackend.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp\} Namespace Reference}{13}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Variable Documentation}{14}{subsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.1.1}kDefaultChannelMask}{14}{subsubsection.7.3.1.1}%
+\contentsline {section}{\numberline {7.4}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::core Namespace Reference}{14}{section.7.4}%
+\contentsline {section}{\numberline {7.5}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::data Namespace Reference}{14}{section.7.5}%
+\contentsline {section}{\numberline {7.6}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::metrics Namespace Reference}{14}{section.7.6}%
+\contentsline {section}{\numberline {7.7}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui Namespace Reference}{14}{section.7.7}%
+\contentsline {chapter}{\numberline {8}Class Documentation}{15}{chapter.8}%
+\contentsline {section}{\numberline {8.1}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Backend\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config Struct Reference}{15}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Detailed Description}{15}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Member Data Documentation}{15}{subsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.2.1}coincidenceWindowPs}{15}{subsubsection.8.1.2.1}%
+\contentsline {subsubsection}{\numberline {8.1.2.2}exposureSeconds}{16}{subsubsection.8.1.2.2}%
+\contentsline {subsubsection}{\numberline {8.1.2.3}replayFile}{16}{subsubsection.8.1.2.3}%
+\contentsline {subsubsection}{\numberline {8.1.2.4}timestampBufferSize}{16}{subsubsection.8.1.2.4}%
+\contentsline {subsubsection}{\numberline {8.1.2.5}useMock}{16}{subsubsection.8.1.2.5}%
+\contentsline {section}{\numberline {8.2}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Bin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Replay\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend Class Reference}{16}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Member Function Documentation}{17}{subsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.1.1}nextBatch()}{17}{subsubsection.8.2.1.1}%
+\contentsline {subsubsection}{\numberline {8.2.1.2}start()}{18}{subsubsection.8.2.1.2}%
+\contentsline {subsubsection}{\numberline {8.2.1.3}stop()}{19}{subsubsection.8.2.1.3}%
+\contentsline {subsection}{\numberline {8.2.2}Member Data Documentation}{19}{subsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.2.1}coincWindowPs\_}{19}{subsubsection.8.2.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2.2}currentSecond\_}{19}{subsubsection.8.2.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.2.3}lastSecond\_}{19}{subsubsection.8.2.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.2.4}singles\_}{19}{subsubsection.8.2.2.4}%
+\contentsline {section}{\numberline {8.3}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::data\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Coincidence Struct Reference}{19}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Member Data Documentation}{20}{subsection.8.3.1}%
+\contentsline {subsubsection}{\numberline {8.3.1.1}counts}{20}{subsubsection.8.3.1.1}%
+\contentsline {subsubsection}{\numberline {8.3.1.2}label}{20}{subsubsection.8.3.1.2}%
+\contentsline {section}{\numberline {8.4}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::metrics\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Dummy\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}QBER Class Reference}{20}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Member Function Documentation}{21}{subsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {8.4.1.1}compute()}{21}{subsubsection.8.4.1.1}%
+\contentsline {subsubsection}{\numberline {8.4.1.2}name()}{21}{subsubsection.8.4.1.2}%
+\contentsline {section}{\numberline {8.5}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::metrics\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Dummy\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Visibility Class Reference}{21}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Member Function Documentation}{22}{subsection.8.5.1}%
+\contentsline {subsubsection}{\numberline {8.5.1.1}compute()}{22}{subsubsection.8.5.1.1}%
+\contentsline {subsubsection}{\numberline {8.5.1.2}name()}{22}{subsubsection.8.5.1.2}%
+\contentsline {section}{\numberline {8.6}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::core\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bus$<$ Payload $>$ Class Template Reference}{22}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Member Typedef Documentation}{23}{subsection.8.6.1}%
+\contentsline {subsubsection}{\numberline {8.6.1.1}Callback}{23}{subsubsection.8.6.1.1}%
+\contentsline {subsection}{\numberline {8.6.2}Member Function Documentation}{23}{subsection.8.6.2}%
+\contentsline {subsubsection}{\numberline {8.6.2.1}publish()}{23}{subsubsection.8.6.2.1}%
+\contentsline {subsubsection}{\numberline {8.6.2.2}subscribe()}{23}{subsubsection.8.6.2.2}%
+\contentsline {subsection}{\numberline {8.6.3}Member Data Documentation}{23}{subsection.8.6.3}%
+\contentsline {subsubsection}{\numberline {8.6.3.1}mutex\_}{23}{subsubsection.8.6.3.1}%
+\contentsline {subsubsection}{\numberline {8.6.3.2}nextToken\_}{24}{subsubsection.8.6.3.2}%
+\contentsline {subsubsection}{\numberline {8.6.3.3}subscribers\_}{24}{subsubsection.8.6.3.3}%
+\contentsline {section}{\numberline {8.7}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IBackend Class Reference}{24}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Constructor \& Destructor Documentation}{25}{subsection.8.7.1}%
+\contentsline {subsubsection}{\numberline {8.7.1.1}$\sim $IBackend()}{25}{subsubsection.8.7.1.1}%
+\contentsline {subsection}{\numberline {8.7.2}Member Function Documentation}{25}{subsection.8.7.2}%
+\contentsline {subsubsection}{\numberline {8.7.2.1}nextBatch()}{25}{subsubsection.8.7.2.1}%
+\contentsline {subsubsection}{\numberline {8.7.2.2}start()}{25}{subsubsection.8.7.2.2}%
+\contentsline {subsubsection}{\numberline {8.7.2.3}stop()}{25}{subsubsection.8.7.2.3}%
+\contentsline {section}{\numberline {8.8}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::metrics\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::IMetric Class Reference}{26}{section.8.8}%
+\contentsline {subsection}{\numberline {8.8.1}Constructor \& Destructor Documentation}{26}{subsection.8.8.1}%
+\contentsline {subsubsection}{\numberline {8.8.1.1}$\sim $IMetric()}{26}{subsubsection.8.8.1.1}%
+\contentsline {subsection}{\numberline {8.8.2}Member Function Documentation}{26}{subsection.8.8.2}%
+\contentsline {subsubsection}{\numberline {8.8.2.1}compute()}{26}{subsubsection.8.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.8.2.2}name()}{26}{subsubsection.8.8.2.2}%
+\contentsline {section}{\numberline {8.9}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window Class Reference}{27}{section.8.9}%
+\contentsline {subsection}{\numberline {8.9.1}Detailed Description}{28}{subsection.8.9.1}%
+\contentsline {subsection}{\numberline {8.9.2}Constructor \& Destructor Documentation}{28}{subsection.8.9.2}%
+\contentsline {subsubsection}{\numberline {8.9.2.1}MainWindow()}{28}{subsubsection.8.9.2.1}%
+\contentsline {subsection}{\numberline {8.9.3}Member Function Documentation}{28}{subsection.8.9.3}%
+\contentsline {subsubsection}{\numberline {8.9.3.1}addPair}{28}{subsubsection.8.9.3.1}%
+\contentsline {subsubsection}{\numberline {8.9.3.2}appendSample()}{29}{subsubsection.8.9.3.2}%
+\contentsline {subsubsection}{\numberline {8.9.3.3}calibrateAll}{29}{subsubsection.8.9.3.3}%
+\contentsline {subsubsection}{\numberline {8.9.3.4}calibrateSelected}{29}{subsubsection.8.9.3.4}%
+\contentsline {subsubsection}{\numberline {8.9.3.5}computeHistogram}{29}{subsubsection.8.9.3.5}%
+\contentsline {subsubsection}{\numberline {8.9.3.6}exportCsv}{29}{subsubsection.8.9.3.6}%
+\contentsline {subsubsection}{\numberline {8.9.3.7}loadConfig()}{29}{subsubsection.8.9.3.7}%
+\contentsline {subsubsection}{\numberline {8.9.3.8}refreshPairList()}{29}{subsubsection.8.9.3.8}%
+\contentsline {subsubsection}{\numberline {8.9.3.9}refreshPairsTable()}{29}{subsubsection.8.9.3.9}%
+\contentsline {subsubsection}{\numberline {8.9.3.10}removeSelectedPair}{29}{subsubsection.8.9.3.10}%
+\contentsline {subsubsection}{\numberline {8.9.3.11}resetPairs}{29}{subsubsection.8.9.3.11}%
+\contentsline {subsubsection}{\numberline {8.9.3.12}saveConfig()}{30}{subsubsection.8.9.3.12}%
+\contentsline {subsubsection}{\numberline {8.9.3.13}setMode()}{30}{subsubsection.8.9.3.13}%
+\contentsline {subsubsection}{\numberline {8.9.3.14}setReplayFile()}{30}{subsubsection.8.9.3.14}%
+\contentsline {subsubsection}{\numberline {8.9.3.15}setupUi()}{30}{subsubsection.8.9.3.15}%
+\contentsline {subsubsection}{\numberline {8.9.3.16}start()}{30}{subsubsection.8.9.3.16}%
+\contentsline {subsubsection}{\numberline {8.9.3.17}stop()}{30}{subsubsection.8.9.3.17}%
+\contentsline {subsubsection}{\numberline {8.9.3.18}tick}{30}{subsubsection.8.9.3.18}%
+\contentsline {subsubsection}{\numberline {8.9.3.19}toggleRecording}{30}{subsubsection.8.9.3.19}%
+\contentsline {subsection}{\numberline {8.9.4}Member Data Documentation}{30}{subsection.8.9.4}%
+\contentsline {subsubsection}{\numberline {8.9.4.1}backend\_}{30}{subsubsection.8.9.4.1}%
+\contentsline {subsubsection}{\numberline {8.9.4.2}cfg\_}{31}{subsubsection.8.9.4.2}%
+\contentsline {subsubsection}{\numberline {8.9.4.3}coincidenceWindowPs\_}{31}{subsubsection.8.9.4.3}%
+\contentsline {subsubsection}{\numberline {8.9.4.4}histogramWindowPs\_}{31}{subsubsection.8.9.4.4}%
+\contentsline {subsubsection}{\numberline {8.9.4.5}latestBatch\_}{31}{subsubsection.8.9.4.5}%
+\contentsline {subsubsection}{\numberline {8.9.4.6}metrics\_}{31}{subsubsection.8.9.4.6}%
+\contentsline {subsubsection}{\numberline {8.9.4.7}mode\_}{31}{subsubsection.8.9.4.7}%
+\contentsline {subsubsection}{\numberline {8.9.4.8}pairs\_}{31}{subsubsection.8.9.4.8}%
+\contentsline {subsubsection}{\numberline {8.9.4.9}replayFile\_}{31}{subsubsection.8.9.4.9}%
+\contentsline {subsubsection}{\numberline {8.9.4.10}t0\_ms\_}{31}{subsubsection.8.9.4.10}%
+\contentsline {subsubsection}{\numberline {8.9.4.11}timer\_}{31}{subsubsection.8.9.4.11}%
+\contentsline {section}{\numberline {8.10}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Mock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend Class Reference}{32}{section.8.10}%
+\contentsline {subsection}{\numberline {8.10.1}Member Function Documentation}{33}{subsection.8.10.1}%
+\contentsline {subsubsection}{\numberline {8.10.1.1}nextBatch()}{33}{subsubsection.8.10.1.1}%
+\contentsline {subsubsection}{\numberline {8.10.1.2}start()}{33}{subsubsection.8.10.1.2}%
+\contentsline {subsubsection}{\numberline {8.10.1.3}stop()}{33}{subsubsection.8.10.1.3}%
+\contentsline {subsection}{\numberline {8.10.2}Member Data Documentation}{34}{subsection.8.10.2}%
+\contentsline {subsubsection}{\numberline {8.10.2.1}exposure\_}{34}{subsubsection.8.10.2.1}%
+\contentsline {subsubsection}{\numberline {8.10.2.2}rng\_}{34}{subsubsection.8.10.2.2}%
+\contentsline {subsubsection}{\numberline {8.10.2.3}running\_}{34}{subsubsection.8.10.2.3}%
+\contentsline {subsubsection}{\numberline {8.10.2.4}startTime\_}{34}{subsubsection.8.10.2.4}%
+\contentsline {section}{\numberline {8.11}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::ui\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pair\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Spec Struct Reference}{34}{section.8.11}%
+\contentsline {subsection}{\numberline {8.11.1}Detailed Description}{34}{subsection.8.11.1}%
+\contentsline {subsection}{\numberline {8.11.2}Member Data Documentation}{35}{subsection.8.11.2}%
+\contentsline {subsubsection}{\numberline {8.11.2.1}chA}{35}{subsubsection.8.11.2.1}%
+\contentsline {subsubsection}{\numberline {8.11.2.2}chB}{35}{subsubsection.8.11.2.2}%
+\contentsline {subsubsection}{\numberline {8.11.2.3}delayPs}{35}{subsubsection.8.11.2.3}%
+\contentsline {subsubsection}{\numberline {8.11.2.4}label}{35}{subsubsection.8.11.2.4}%
+\contentsline {section}{\numberline {8.12}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::acquisition\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Qu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TAGBackend Class Reference}{35}{section.8.12}%
+\contentsline {subsection}{\numberline {8.12.1}Member Function Documentation}{36}{subsection.8.12.1}%
+\contentsline {subsubsection}{\numberline {8.12.1.1}nextBatch()}{36}{subsubsection.8.12.1.1}%
+\contentsline {subsubsection}{\numberline {8.12.1.2}start()}{37}{subsubsection.8.12.1.2}%
+\contentsline {subsubsection}{\numberline {8.12.1.3}startRecording()}{37}{subsubsection.8.12.1.3}%
+\contentsline {subsubsection}{\numberline {8.12.1.4}stop()}{37}{subsubsection.8.12.1.4}%
+\contentsline {subsubsection}{\numberline {8.12.1.5}stopRecording()}{37}{subsubsection.8.12.1.5}%
+\contentsline {subsection}{\numberline {8.12.2}Member Data Documentation}{37}{subsection.8.12.2}%
+\contentsline {subsubsection}{\numberline {8.12.2.1}bufferSize\_}{37}{subsubsection.8.12.2.1}%
+\contentsline {subsubsection}{\numberline {8.12.2.2}chBuffer\_}{37}{subsubsection.8.12.2.2}%
+\contentsline {subsubsection}{\numberline {8.12.2.3}coincWindowPs\_}{38}{subsubsection.8.12.2.3}%
+\contentsline {subsubsection}{\numberline {8.12.2.4}connected\_}{38}{subsubsection.8.12.2.4}%
+\contentsline {subsubsection}{\numberline {8.12.2.5}exposureMs\_}{38}{subsubsection.8.12.2.5}%
+\contentsline {subsubsection}{\numberline {8.12.2.6}recording\_}{38}{subsubsection.8.12.2.6}%
+\contentsline {subsubsection}{\numberline {8.12.2.7}tsBuffer\_}{38}{subsubsection.8.12.2.7}%
+\contentsline {section}{\numberline {8.13}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::metrics\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Registry Class Reference}{38}{section.8.13}%
+\contentsline {subsection}{\numberline {8.13.1}Member Function Documentation}{38}{subsection.8.13.1}%
+\contentsline {subsubsection}{\numberline {8.13.1.1}computeAll()}{38}{subsubsection.8.13.1.1}%
+\contentsline {subsubsection}{\numberline {8.13.1.2}registerMetric()}{39}{subsubsection.8.13.1.2}%
+\contentsline {subsection}{\numberline {8.13.2}Member Data Documentation}{39}{subsection.8.13.2}%
+\contentsline {subsubsection}{\numberline {8.13.2.1}metrics\_}{39}{subsubsection.8.13.2.1}%
+\contentsline {section}{\numberline {8.14}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::data\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sample\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Batch Struct Reference}{39}{section.8.14}%
+\contentsline {subsection}{\numberline {8.14.1}Member Data Documentation}{39}{subsection.8.14.1}%
+\contentsline {subsubsection}{\numberline {8.14.1.1}coincidences}{39}{subsubsection.8.14.1.1}%
+\contentsline {subsubsection}{\numberline {8.14.1.2}metrics}{39}{subsubsection.8.14.1.2}%
+\contentsline {subsubsection}{\numberline {8.14.1.3}singles}{39}{subsubsection.8.14.1.3}%
+\contentsline {subsubsection}{\numberline {8.14.1.4}timestamp}{40}{subsubsection.8.14.1.4}%
+\contentsline {subsubsection}{\numberline {8.14.1.5}timestamps\_ps}{40}{subsubsection.8.14.1.5}%
+\contentsline {section}{\numberline {8.15}qlaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::core\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bus$<$ Payload $>$\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Subscriber Struct Reference}{40}{section.8.15}%
+\contentsline {subsection}{\numberline {8.15.1}Member Data Documentation}{40}{subsection.8.15.1}%
+\contentsline {subsubsection}{\numberline {8.15.1.1}cb}{40}{subsubsection.8.15.1.1}%
+\contentsline {subsubsection}{\numberline {8.15.1.2}token}{40}{subsubsection.8.15.1.2}%
+\contentsline {chapter}{\numberline {9}File Documentation}{41}{chapter.9}%
+\contentsline {section}{\numberline {9.1}include/qlaib/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Replay\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend.h File Reference}{41}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Bin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Replay\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{42}{section.9.2}%
+\contentsline {section}{\numberline {9.3}include/qlaib/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IBackend.h File Reference}{42}{section.9.3}%
+\contentsline {section}{\numberline {9.4}IBackend.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{43}{section.9.4}%
+\contentsline {section}{\numberline {9.5}include/qlaib/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend.h File Reference}{44}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Mock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{45}{section.9.6}%
+\contentsline {section}{\numberline {9.7}include/qlaib/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Qu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TAGBackend.h File Reference}{45}{section.9.7}%
+\contentsline {section}{\numberline {9.8}Qu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TAGBackend.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{46}{section.9.8}%
+\contentsline {section}{\numberline {9.9}include/qlaib/core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bus.h File Reference}{47}{section.9.9}%
+\contentsline {section}{\numberline {9.10}Event\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bus.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{48}{section.9.10}%
+\contentsline {section}{\numberline {9.11}include/qlaib/data/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sample\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Batch.h File Reference}{48}{section.9.11}%
+\contentsline {section}{\numberline {9.12}Sample\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Batch.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{49}{section.9.12}%
+\contentsline {section}{\numberline {9.13}include/qlaib/metrics/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}IMetric.h File Reference}{50}{section.9.13}%
+\contentsline {section}{\numberline {9.14}IMetric.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{51}{section.9.14}%
+\contentsline {section}{\numberline {9.15}include/qlaib/metrics/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Registry.h File Reference}{51}{section.9.15}%
+\contentsline {section}{\numberline {9.16}Registry.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{52}{section.9.16}%
+\contentsline {section}{\numberline {9.17}include/qlaib/ui/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window.h File Reference}{53}{section.9.17}%
+\contentsline {section}{\numberline {9.18}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{54}{section.9.18}%
+\contentsline {section}{\numberline {9.19}src/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Bin\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Replay\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend.cpp File Reference}{55}{section.9.19}%
+\contentsline {section}{\numberline {9.20}src/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Mock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Backend.cpp File Reference}{56}{section.9.20}%
+\contentsline {section}{\numberline {9.21}src/acquisition/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Qu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}TAGBackend.cpp File Reference}{56}{section.9.21}%
+\contentsline {section}{\numberline {9.22}src/metrics/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Registry.cpp File Reference}{57}{section.9.22}%
+\contentsline {section}{\numberline {9.23}src/ui/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Main\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Window.cpp File Reference}{57}{section.9.23}%
+\contentsline {subsection}{\numberline {9.23.1}Function Documentation}{58}{subsection.9.23.1}%
+\contentsline {subsubsection}{\numberline {9.23.1.1}findBestDelayPicoseconds()}{58}{subsubsection.9.23.1.1}%
+\contentsline {section}{\numberline {9.24}/home/bogfootlj/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Documents/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ph\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DCode/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}QLaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cpp/docs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ARCHITECTURE.md File Reference}{59}{section.9.24}%
+\contentsline {section}{\numberline {9.25}/home/bogfootlj/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Documents/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Ph\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DCode/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}QLaib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lib\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Cpp/docs/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USAGE.md File Reference}{59}{section.9.25}%
+\contentsline {chapter}{Index}{61}{section*.101}%

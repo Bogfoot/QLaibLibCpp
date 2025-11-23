@@ -1,0 +1,56 @@
+# Doxygen configuration for QLaibLibCpp
+# Generate both HTML and LaTeX (PDF via make) documentation.
+
+PROJECT_NAME           = "QLaibLibCpp"
+PROJECT_NUMBER         = "0.1.0"
+OUTPUT_DIRECTORY       = docs/doxygen
+CREATE_SUBDIRS         = NO
+
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+OPTIMIZE_FOR_FORTRAN   = NO
+OPTIMIZE_OUTPUT_VHDL   = NO
+
+INPUT                  = cpp/include cpp/src docs
+RECURSIVE              = YES
+FILE_PATTERNS          = *.h *.hpp *.cpp *.md
+EXCLUDE                = cpp/build build
+EXCLUDE_SYMLINKS       = YES
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_ANON_NSPACES   = YES
+
+QUIET                  = NO
+WARN_IF_UNDOCUMENTED   = YES
+WARN_LOGFILE           = docs/doxygen/warnings.log
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_TREEVIEW      = YES
+USE_MATHJAX            = YES
+
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+PDF_HYPERLINKS         = YES
+LATEX_BATCHMODE        = YES
+
+GENERATE_XML           = NO
+
+ALIASES                = "todo=\\xrefitem todo \"Todo\" \"Todo List\""
+
+CASE_SENSE_NAMES       = NO
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+
+TAB_SIZE               = 2
+MULTILINE_CPP_IS_BRIEF = YES
+STRIP_FROM_PATH        = cpp
+
+JAVADOC_AUTOBRIEF      = YES
+
+# Treat Markdown in docs/ as main pages
+USE_MDFILE_AS_MAINPAGE = docs/README.md
+
+QUIET                  = NO

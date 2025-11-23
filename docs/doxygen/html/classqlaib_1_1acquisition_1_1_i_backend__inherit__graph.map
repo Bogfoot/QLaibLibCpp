@@ -1,0 +1,9 @@
+<map id="qlaib::acquisition::IBackend" name="qlaib::acquisition::IBackend">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,139,109"/>
+<area shape="rect" id="Node000002" href="$classqlaib_1_1acquisition_1_1_bin_replay_backend.html" title=" " alt="" coords="187,5,337,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,62,201,43,203,48,146,67"/>
+<area shape="rect" id="Node000003" href="$classqlaib_1_1acquisition_1_1_mock_backend.html" title=" " alt="" coords="195,69,329,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,87,195,87,195,92,152,92"/>
+<area shape="rect" id="Node000004" href="$classqlaib_1_1acquisition_1_1_qu_t_a_g_backend.html" title=" " alt="" coords="195,133,329,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="146,111,203,131,201,136,144,116"/>
+</map>

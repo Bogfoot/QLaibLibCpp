@@ -1,0 +1,48 @@
+\doxysection{qlaib\+::metrics\+::Registry Class Reference}
+\hypertarget{classqlaib_1_1metrics_1_1_registry}{}\label{classqlaib_1_1metrics_1_1_registry}\index{qlaib::metrics::Registry@{qlaib::metrics::Registry}}
+
+
+{\ttfamily \#include $<$Registry.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classqlaib_1_1metrics_1_1_registry_a98952731142514258efd0c615c7f3570}{compute\+All}} (\mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} \&batch) const
+\item 
+void \mbox{\hyperlink{classqlaib_1_1metrics_1_1_registry_ad39ab9c2adf20dd64528daebb53a461c}{register\+Metric}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classqlaib_1_1metrics_1_1_i_metric}{IMetric}} $>$ metric)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classqlaib_1_1metrics_1_1_i_metric}{IMetric}} $>$ $>$ \mbox{\hyperlink{classqlaib_1_1metrics_1_1_registry_ad0941bedd615a19d4416117fee2c3761}{metrics\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classqlaib_1_1metrics_1_1_registry_a98952731142514258efd0c615c7f3570}\label{classqlaib_1_1metrics_1_1_registry_a98952731142514258efd0c615c7f3570} 
+\index{qlaib::metrics::Registry@{qlaib::metrics::Registry}!computeAll@{computeAll}}
+\index{computeAll@{computeAll}!qlaib::metrics::Registry@{qlaib::metrics::Registry}}
+\doxysubsubsection{\texorpdfstring{computeAll()}{computeAll()}}
+{\footnotesize\ttfamily void qlaib\+::metrics\+::\+Registry\+::compute\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} \&}]{batch }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classqlaib_1_1metrics_1_1_registry_ad39ab9c2adf20dd64528daebb53a461c}\label{classqlaib_1_1metrics_1_1_registry_ad39ab9c2adf20dd64528daebb53a461c} 
+\index{qlaib::metrics::Registry@{qlaib::metrics::Registry}!registerMetric@{registerMetric}}
+\index{registerMetric@{registerMetric}!qlaib::metrics::Registry@{qlaib::metrics::Registry}}
+\doxysubsubsection{\texorpdfstring{registerMetric()}{registerMetric()}}
+{\footnotesize\ttfamily void qlaib\+::metrics\+::\+Registry\+::register\+Metric (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classqlaib_1_1metrics_1_1_i_metric}{IMetric}} $>$}]{metric }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classqlaib_1_1metrics_1_1_registry_ad0941bedd615a19d4416117fee2c3761}\label{classqlaib_1_1metrics_1_1_registry_ad0941bedd615a19d4416117fee2c3761} 
+\index{qlaib::metrics::Registry@{qlaib::metrics::Registry}!metrics\_@{metrics\_}}
+\index{metrics\_@{metrics\_}!qlaib::metrics::Registry@{qlaib::metrics::Registry}}
+\doxysubsubsection{\texorpdfstring{metrics\_}{metrics\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classqlaib_1_1metrics_1_1_i_metric}{IMetric}}$>$ $>$ qlaib\+::metrics\+::\+Registry\+::metrics\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/qlaib/metrics/\mbox{\hyperlink{_registry_8h}{Registry.\+h}}\item 
+src/metrics/\mbox{\hyperlink{_registry_8cpp}{Registry.\+cpp}}\end{DoxyCompactItemize}

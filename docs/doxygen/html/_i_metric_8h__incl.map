@@ -1,0 +1,17 @@
+<map id="include/qlaib/metrics/IMetric.h" name="include/qlaib/metrics/IMetric.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="271,5,430,45"/>
+<area shape="rect" id="Node000002" href="$_sample_batch_8h.html" title=" " alt="" coords="124,93,313,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="320,48,252,88,249,84,318,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="275,167,333,192"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="349,46,328,119,316,155,311,153,323,118,343,45"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="358,167,482,192"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="362,45,412,153,407,155,357,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,72,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="191,121,82,164,80,159,189,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="96,167,163,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="206,121,156,160,153,156,203,117"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="234,117,281,156,278,160,231,121"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="252,116,375,159,374,165,250,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="187,167,250,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="221,119,221,153,216,153,216,119"/>
+</map>

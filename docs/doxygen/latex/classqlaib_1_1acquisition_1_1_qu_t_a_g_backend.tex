@@ -1,0 +1,180 @@
+\doxysection{qlaib\+::acquisition\+::Qu\+TAGBackend Class Reference}
+\hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend}{}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend}\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+
+
+{\ttfamily \#include $<$Qu\+TAGBackend.\+h$>$}
+
+
+
+Inheritance diagram for qlaib\+::acquisition\+::Qu\+TAGBackend\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for qlaib\+::acquisition\+::Qu\+TAGBackend\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ \mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} $>$ \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a1fe5c6bb5fc595c44ec1c30765a13ede}{next\+Batch}} () override
+\begin{DoxyCompactList}\small\item\em Retrieve the next batch of samples, if available. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_aeb2bd276a0de10606186887735c194c3}{start}} (const \mbox{\hyperlink{structqlaib_1_1acquisition_1_1_backend_config}{Backend\+Config}} \&config) override
+\begin{DoxyCompactList}\small\item\em Initialise the backend and prepare to emit batches. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a859b7dead3f365180dd53c84f0ce69d8}{start\+Recording}} (const std\+::string \&filepath, bool compressed=false)
+\item 
+void \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_afd0799e5d71f5be1f006115e3588a2fb}{stop}} () override
+\begin{DoxyCompactList}\small\item\em Stop acquisition and release any hardware or file handles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a458ef83fc04715a6a6f9cdc98abcc528}{stop\+Recording}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend}{qlaib\+::acquisition\+::\+IBackend}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_af839ed969f3249cc7a79a9ca319712f2}{\texorpdfstring{$\sim$}{\string~}\+IBackend}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a58f6dd09333368e17fc79427fbd386ca}{buffer\+Size\+\_\+}} \{200000\}
+\item 
+std\+::vector$<$ Uint8 $>$ \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_ac665bb7a6601009053424fcf013bb084}{ch\+Buffer\+\_\+}}
+\item 
+long long \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a2d684e8862ffb9437f3ac49b3df4e392}{coinc\+Window\+Ps\+\_\+}} \{200000\}
+\item 
+bool \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a3914e7140fee2ce1898a1dec18814978}{connected\+\_\+}} \{false\}
+\item 
+double \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a6eea25efdbd1ca5d519f337c4134caa0}{exposure\+Ms\+\_\+}} \{1000.\+0\}
+\item 
+bool \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a587769762958f98ced70b210ea8211ad}{recording\+\_\+}} \{false\}
+\item 
+std\+::vector$<$ Int64 $>$ \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a55d37a52e71c1136790dd0151bd1ebee}{ts\+Buffer\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a1fe5c6bb5fc595c44ec1c30765a13ede}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a1fe5c6bb5fc595c44ec1c30765a13ede} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!nextBatch@{nextBatch}}
+\index{nextBatch@{nextBatch}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{nextBatch()}{nextBatch()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} $>$ qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::next\+Batch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieve the next batch of samples, if available. 
+
+\begin{DoxyReturn}{Returns}
+A Sample\+Batch when data is ready; std\+::nullopt otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_ad5c6b13ab311b3fb7986ea74d4c62fb7}{qlaib\+::acquisition\+::\+IBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_aeb2bd276a0de10606186887735c194c3}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_aeb2bd276a0de10606186887735c194c3} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!start@{start}}
+\index{start@{start}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structqlaib_1_1acquisition_1_1_backend_config}{Backend\+Config}} \&}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialise the backend and prepare to emit batches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Immutable acquisition parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false if initialisation failed. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_ab90c1761a3fc75ee4f8f0289f1668357}{qlaib\+::acquisition\+::\+IBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a859b7dead3f365180dd53c84f0ce69d8}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a859b7dead3f365180dd53c84f0ce69d8} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!startRecording@{startRecording}}
+\index{startRecording@{startRecording}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{startRecording()}{startRecording()}}
+{\footnotesize\ttfamily bool qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::start\+Recording (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath,  }\item[{bool}]{compressed = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_afd0799e5d71f5be1f006115e3588a2fb}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_afd0799e5d71f5be1f006115e3588a2fb} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!stop@{stop}}
+\index{stop@{stop}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stop acquisition and release any hardware or file handles. 
+
+
+
+Implements \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_aadc08468187817cb9002c0d1b48a36d3}{qlaib\+::acquisition\+::\+IBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a458ef83fc04715a6a6f9cdc98abcc528}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a458ef83fc04715a6a6f9cdc98abcc528} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!stopRecording@{stopRecording}}
+\index{stopRecording@{stopRecording}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{stopRecording()}{stopRecording()}}
+{\footnotesize\ttfamily void qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::stop\+Recording (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a58f6dd09333368e17fc79427fbd386ca}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a58f6dd09333368e17fc79427fbd386ca} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!bufferSize\_@{bufferSize\_}}
+\index{bufferSize\_@{bufferSize\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{bufferSize\_}{bufferSize\_}}
+{\footnotesize\ttfamily int qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::buffer\+Size\+\_\+ \{200000\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_ac665bb7a6601009053424fcf013bb084}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_ac665bb7a6601009053424fcf013bb084} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!chBuffer\_@{chBuffer\_}}
+\index{chBuffer\_@{chBuffer\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{chBuffer\_}{chBuffer\_}}
+{\footnotesize\ttfamily std\+::vector$<$Uint8$>$ qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::ch\+Buffer\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a2d684e8862ffb9437f3ac49b3df4e392}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a2d684e8862ffb9437f3ac49b3df4e392} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!coincWindowPs\_@{coincWindowPs\_}}
+\index{coincWindowPs\_@{coincWindowPs\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{coincWindowPs\_}{coincWindowPs\_}}
+{\footnotesize\ttfamily long long qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::coinc\+Window\+Ps\+\_\+ \{200000\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a3914e7140fee2ce1898a1dec18814978}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a3914e7140fee2ce1898a1dec18814978} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!connected\_@{connected\_}}
+\index{connected\_@{connected\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{connected\_}{connected\_}}
+{\footnotesize\ttfamily bool qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::connected\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a6eea25efdbd1ca5d519f337c4134caa0}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a6eea25efdbd1ca5d519f337c4134caa0} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!exposureMs\_@{exposureMs\_}}
+\index{exposureMs\_@{exposureMs\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{exposureMs\_}{exposureMs\_}}
+{\footnotesize\ttfamily double qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::exposure\+Ms\+\_\+ \{1000.\+0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a587769762958f98ced70b210ea8211ad}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a587769762958f98ced70b210ea8211ad} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!recording\_@{recording\_}}
+\index{recording\_@{recording\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{recording\_}{recording\_}}
+{\footnotesize\ttfamily bool qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::recording\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a55d37a52e71c1136790dd0151bd1ebee}\label{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a55d37a52e71c1136790dd0151bd1ebee} 
+\index{qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}!tsBuffer\_@{tsBuffer\_}}
+\index{tsBuffer\_@{tsBuffer\_}!qlaib::acquisition::QuTAGBackend@{qlaib::acquisition::QuTAGBackend}}
+\doxysubsubsection{\texorpdfstring{tsBuffer\_}{tsBuffer\_}}
+{\footnotesize\ttfamily std\+::vector$<$Int64$>$ qlaib\+::acquisition\+::\+Qu\+TAGBackend\+::ts\+Buffer\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/qlaib/acquisition/\mbox{\hyperlink{_qu_t_a_g_backend_8h}{Qu\+TAGBackend.\+h}}\item 
+src/acquisition/\mbox{\hyperlink{_qu_t_a_g_backend_8cpp}{Qu\+TAGBackend.\+cpp}}\end{DoxyCompactItemize}

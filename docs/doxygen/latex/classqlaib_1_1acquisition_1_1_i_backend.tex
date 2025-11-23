@@ -1,0 +1,97 @@
+\doxysection{qlaib\+::acquisition\+::IBackend Class Reference}
+\hypertarget{classqlaib_1_1acquisition_1_1_i_backend}{}\label{classqlaib_1_1acquisition_1_1_i_backend}\index{qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}}
+
+
+{\ttfamily \#include $<$IBackend.\+h$>$}
+
+
+
+Inheritance diagram for qlaib\+::acquisition\+::IBackend\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{classqlaib_1_1acquisition_1_1_i_backend__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::optional$<$ \mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} $>$ \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_ad5c6b13ab311b3fb7986ea74d4c62fb7}{next\+Batch}} ()=0
+\begin{DoxyCompactList}\small\item\em Retrieve the next batch of samples, if available. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_ab90c1761a3fc75ee4f8f0289f1668357}{start}} (const \mbox{\hyperlink{structqlaib_1_1acquisition_1_1_backend_config}{Backend\+Config}} \&config)=0
+\begin{DoxyCompactList}\small\item\em Initialise the backend and prepare to emit batches. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_aadc08468187817cb9002c0d1b48a36d3}{stop}} ()=0
+\begin{DoxyCompactList}\small\item\em Stop acquisition and release any hardware or file handles. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_af839ed969f3249cc7a79a9ca319712f2}{\texorpdfstring{$\sim$}{\string~}\+IBackend}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classqlaib_1_1acquisition_1_1_i_backend_af839ed969f3249cc7a79a9ca319712f2}\label{classqlaib_1_1acquisition_1_1_i_backend_af839ed969f3249cc7a79a9ca319712f2} 
+\index{qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}!````~IBackend@{\texorpdfstring{$\sim$}{\string~}IBackend}}
+\index{````~IBackend@{\texorpdfstring{$\sim$}{\string~}IBackend}!qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IBackend()}{\string~IBackend()}}
+{\footnotesize\ttfamily virtual qlaib\+::acquisition\+::\+IBackend\+::\texorpdfstring{$\sim$}{\string~}\+IBackend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classqlaib_1_1acquisition_1_1_i_backend_ad5c6b13ab311b3fb7986ea74d4c62fb7}\label{classqlaib_1_1acquisition_1_1_i_backend_ad5c6b13ab311b3fb7986ea74d4c62fb7} 
+\index{qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}!nextBatch@{nextBatch}}
+\index{nextBatch@{nextBatch}!qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}}
+\doxysubsubsection{\texorpdfstring{nextBatch()}{nextBatch()}}
+{\footnotesize\ttfamily virtual std\+::optional$<$ \mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} $>$ qlaib\+::acquisition\+::\+IBackend\+::next\+Batch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Retrieve the next batch of samples, if available. 
+
+\begin{DoxyReturn}{Returns}
+A Sample\+Batch when data is ready; std\+::nullopt otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab546a6ea20c0c71c882417c3632c643e}{qlaib\+::acquisition\+::\+Bin\+Replay\+Backend}}, \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_mock_backend_a93f515f9e073131460a51f690ff481cb}{qlaib\+::acquisition\+::\+Mock\+Backend}}, and \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_a1fe5c6bb5fc595c44ec1c30765a13ede}{qlaib\+::acquisition\+::\+Qu\+TAGBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_i_backend_ab90c1761a3fc75ee4f8f0289f1668357}\label{classqlaib_1_1acquisition_1_1_i_backend_ab90c1761a3fc75ee4f8f0289f1668357} 
+\index{qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}!start@{start}}
+\index{start@{start}!qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily virtual bool qlaib\+::acquisition\+::\+IBackend\+::start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structqlaib_1_1acquisition_1_1_backend_config}{Backend\+Config}} \&}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initialise the backend and prepare to emit batches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Immutable acquisition parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false if initialisation failed. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a396dc73bf8dd0625cc84b642568ccbf0}{qlaib\+::acquisition\+::\+Bin\+Replay\+Backend}}, \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_mock_backend_a454d10fa0ce3fe8b218ff9f3d4cd8102}{qlaib\+::acquisition\+::\+Mock\+Backend}}, and \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_aeb2bd276a0de10606186887735c194c3}{qlaib\+::acquisition\+::\+Qu\+TAGBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_i_backend_aadc08468187817cb9002c0d1b48a36d3}\label{classqlaib_1_1acquisition_1_1_i_backend_aadc08468187817cb9002c0d1b48a36d3} 
+\index{qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}!stop@{stop}}
+\index{stop@{stop}!qlaib::acquisition::IBackend@{qlaib::acquisition::IBackend}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily virtual void qlaib\+::acquisition\+::\+IBackend\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Stop acquisition and release any hardware or file handles. 
+
+
+
+Implemented in \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a6f15ca4dbcac8cae404305f13936454a}{qlaib\+::acquisition\+::\+Bin\+Replay\+Backend}}, \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_mock_backend_abfb2598a13427e8f40d4336367c5c5cb}{qlaib\+::acquisition\+::\+Mock\+Backend}}, and \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_qu_t_a_g_backend_afd0799e5d71f5be1f006115e3588a2fb}{qlaib\+::acquisition\+::\+Qu\+TAGBackend}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/qlaib/acquisition/\mbox{\hyperlink{_i_backend_8h}{IBackend.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\doxysection{qlaib\+::core\+::Event\+Bus\texorpdfstring{$<$}{<} Payload \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classqlaib_1_1core_1_1_event_bus}{}\label{classqlaib_1_1core_1_1_event_bus}\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+
+
+{\ttfamily \#include $<$Event\+Bus.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structqlaib_1_1core_1_1_event_bus_1_1_subscriber}{Subscriber}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a6aeedfe8e4c74f041dd08dadef7a55fd}{Callback}} = std\+::function$<$ void(const Payload \&)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a72d66fb6b4f53e1c9ec94105f4676ca4}{publish}} (const std\+::string \&topic, const Payload \&payload)
+\item 
+int \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a735565d6da2ad1608e4076a36bc7b917}{subscribe}} (const std\+::string \&topic, \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a6aeedfe8e4c74f041dd08dadef7a55fd}{Callback}} cb)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a68448fa8a2aeb8e57e140f697061b9af}{mutex\+\_\+}}
+\item 
+int \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_aa471d9fe22ec9d7d89cb3b4146e773a2}{next\+Token\+\_\+}} \{0\}
+\item 
+std\+::map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{structqlaib_1_1core_1_1_event_bus_1_1_subscriber}{Subscriber}} $>$ $>$ \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a57b880b1d92343bac715f195498ccc0c}{subscribers\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classqlaib_1_1core_1_1_event_bus_a6aeedfe8e4c74f041dd08dadef7a55fd}\label{classqlaib_1_1core_1_1_event_bus_a6aeedfe8e4c74f041dd08dadef7a55fd} 
+\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}!Callback@{Callback}}
+\index{Callback@{Callback}!qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+\doxysubsubsection{\texorpdfstring{Callback}{Callback}}
+{\footnotesize\ttfamily template$<$typename Payload $>$ \\
+using \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus}{qlaib\+::core\+::\+Event\+Bus}}$<$ Payload $>$\+::\+Callback =  std\+::function$<$void(const Payload \&)$>$}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classqlaib_1_1core_1_1_event_bus_a72d66fb6b4f53e1c9ec94105f4676ca4}\label{classqlaib_1_1core_1_1_event_bus_a72d66fb6b4f53e1c9ec94105f4676ca4} 
+\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}!publish@{publish}}
+\index{publish@{publish}!qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+\doxysubsubsection{\texorpdfstring{publish()}{publish()}}
+{\footnotesize\ttfamily template$<$typename Payload $>$ \\
+void \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus}{qlaib\+::core\+::\+Event\+Bus}}$<$ Payload $>$\+::publish (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{topic,  }\item[{const Payload \&}]{payload }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classqlaib_1_1core_1_1_event_bus_a735565d6da2ad1608e4076a36bc7b917}\label{classqlaib_1_1core_1_1_event_bus_a735565d6da2ad1608e4076a36bc7b917} 
+\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+\doxysubsubsection{\texorpdfstring{subscribe()}{subscribe()}}
+{\footnotesize\ttfamily template$<$typename Payload $>$ \\
+int \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus}{qlaib\+::core\+::\+Event\+Bus}}$<$ Payload $>$\+::subscribe (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{topic,  }\item[{\mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus_a6aeedfe8e4c74f041dd08dadef7a55fd}{Callback}}}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classqlaib_1_1core_1_1_event_bus_a68448fa8a2aeb8e57e140f697061b9af}\label{classqlaib_1_1core_1_1_event_bus_a68448fa8a2aeb8e57e140f697061b9af} 
+\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}!mutex\_@{mutex\_}}
+\index{mutex\_@{mutex\_}!qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+\doxysubsubsection{\texorpdfstring{mutex\_}{mutex\_}}
+{\footnotesize\ttfamily template$<$typename Payload $>$ \\
+std\+::mutex \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus}{qlaib\+::core\+::\+Event\+Bus}}$<$ Payload $>$\+::mutex\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1core_1_1_event_bus_aa471d9fe22ec9d7d89cb3b4146e773a2}\label{classqlaib_1_1core_1_1_event_bus_aa471d9fe22ec9d7d89cb3b4146e773a2} 
+\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}!nextToken\_@{nextToken\_}}
+\index{nextToken\_@{nextToken\_}!qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+\doxysubsubsection{\texorpdfstring{nextToken\_}{nextToken\_}}
+{\footnotesize\ttfamily template$<$typename Payload $>$ \\
+int \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus}{qlaib\+::core\+::\+Event\+Bus}}$<$ Payload $>$\+::next\+Token\+\_\+ \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1core_1_1_event_bus_a57b880b1d92343bac715f195498ccc0c}\label{classqlaib_1_1core_1_1_event_bus_a57b880b1d92343bac715f195498ccc0c} 
+\index{qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}!subscribers\_@{subscribers\_}}
+\index{subscribers\_@{subscribers\_}!qlaib::core::EventBus$<$ Payload $>$@{qlaib::core::EventBus$<$ Payload $>$}}
+\doxysubsubsection{\texorpdfstring{subscribers\_}{subscribers\_}}
+{\footnotesize\ttfamily template$<$typename Payload $>$ \\
+std\+::map$<$std\+::string, std\+::vector$<$\mbox{\hyperlink{structqlaib_1_1core_1_1_event_bus_1_1_subscriber}{Subscriber}}$>$ $>$ \mbox{\hyperlink{classqlaib_1_1core_1_1_event_bus}{qlaib\+::core\+::\+Event\+Bus}}$<$ Payload $>$\+::subscribers\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/qlaib/core/\mbox{\hyperlink{_event_bus_8h}{Event\+Bus.\+h}}\end{DoxyCompactItemize}

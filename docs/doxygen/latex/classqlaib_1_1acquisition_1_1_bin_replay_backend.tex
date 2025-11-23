@@ -1,0 +1,140 @@
+\doxysection{qlaib\+::acquisition\+::Bin\+Replay\+Backend Class Reference}
+\hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend}{}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend}\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+
+
+{\ttfamily \#include $<$Bin\+Replay\+Backend.\+h$>$}
+
+
+
+Inheritance diagram for qlaib\+::acquisition\+::Bin\+Replay\+Backend\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classqlaib_1_1acquisition_1_1_bin_replay_backend__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for qlaib\+::acquisition\+::Bin\+Replay\+Backend\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classqlaib_1_1acquisition_1_1_bin_replay_backend__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ \mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} $>$ \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab546a6ea20c0c71c882417c3632c643e}{next\+Batch}} () override
+\begin{DoxyCompactList}\small\item\em Retrieve the next batch of samples, if available. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a396dc73bf8dd0625cc84b642568ccbf0}{start}} (const \mbox{\hyperlink{structqlaib_1_1acquisition_1_1_backend_config}{Backend\+Config}} \&config) override
+\begin{DoxyCompactList}\small\item\em Initialise the backend and prepare to emit batches. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a6f15ca4dbcac8cae404305f13936454a}{stop}} () override
+\begin{DoxyCompactList}\small\item\em Stop acquisition and release any hardware or file handles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend}{qlaib\+::acquisition\+::\+IBackend}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_af839ed969f3249cc7a79a9ca319712f2}{\texorpdfstring{$\sim$}{\string~}\+IBackend}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long long \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a9abfb7581e27529bbd05aeed8777bcc3}{coinc\+Window\+Ps\+\_\+}} \{200000\}
+\item 
+long long \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a12a0dcc8984487ea429d9a3543b2da64}{current\+Second\+\_\+}} \{0\}
+\item 
+long long \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_a584973267115183b7657f0cbb387e903}{last\+Second\+\_\+}} \{-\/1\}
+\item 
+std\+::map$<$ int, Singles $>$ \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab6b1a9a314b3a1965a9edb1078a0f479}{singles\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab546a6ea20c0c71c882417c3632c643e}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab546a6ea20c0c71c882417c3632c643e} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!nextBatch@{nextBatch}}
+\index{nextBatch@{nextBatch}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{nextBatch()}{nextBatch()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{structqlaib_1_1data_1_1_sample_batch}{data\+::\+Sample\+Batch}} $>$ qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::next\+Batch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieve the next batch of samples, if available. 
+
+\begin{DoxyReturn}{Returns}
+A Sample\+Batch when data is ready; std\+::nullopt otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_ad5c6b13ab311b3fb7986ea74d4c62fb7}{qlaib\+::acquisition\+::\+IBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_a396dc73bf8dd0625cc84b642568ccbf0}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_a396dc73bf8dd0625cc84b642568ccbf0} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!start@{start}}
+\index{start@{start}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structqlaib_1_1acquisition_1_1_backend_config}{Backend\+Config}} \&}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialise the backend and prepare to emit batches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Immutable acquisition parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success; false if initialisation failed. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_ab90c1761a3fc75ee4f8f0289f1668357}{qlaib\+::acquisition\+::\+IBackend}}.
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_a6f15ca4dbcac8cae404305f13936454a}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_a6f15ca4dbcac8cae404305f13936454a} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!stop@{stop}}
+\index{stop@{stop}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stop acquisition and release any hardware or file handles. 
+
+
+
+Implements \mbox{\hyperlink{classqlaib_1_1acquisition_1_1_i_backend_aadc08468187817cb9002c0d1b48a36d3}{qlaib\+::acquisition\+::\+IBackend}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_a9abfb7581e27529bbd05aeed8777bcc3}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_a9abfb7581e27529bbd05aeed8777bcc3} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!coincWindowPs\_@{coincWindowPs\_}}
+\index{coincWindowPs\_@{coincWindowPs\_}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{coincWindowPs\_}{coincWindowPs\_}}
+{\footnotesize\ttfamily long long qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::coinc\+Window\+Ps\+\_\+ \{200000\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_a12a0dcc8984487ea429d9a3543b2da64}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_a12a0dcc8984487ea429d9a3543b2da64} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!currentSecond\_@{currentSecond\_}}
+\index{currentSecond\_@{currentSecond\_}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{currentSecond\_}{currentSecond\_}}
+{\footnotesize\ttfamily long long qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::current\+Second\+\_\+ \{0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_a584973267115183b7657f0cbb387e903}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_a584973267115183b7657f0cbb387e903} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!lastSecond\_@{lastSecond\_}}
+\index{lastSecond\_@{lastSecond\_}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{lastSecond\_}{lastSecond\_}}
+{\footnotesize\ttfamily long long qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::last\+Second\+\_\+ \{-\/1\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab6b1a9a314b3a1965a9edb1078a0f479}\label{classqlaib_1_1acquisition_1_1_bin_replay_backend_ab6b1a9a314b3a1965a9edb1078a0f479} 
+\index{qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}!singles\_@{singles\_}}
+\index{singles\_@{singles\_}!qlaib::acquisition::BinReplayBackend@{qlaib::acquisition::BinReplayBackend}}
+\doxysubsubsection{\texorpdfstring{singles\_}{singles\_}}
+{\footnotesize\ttfamily std\+::map$<$int, Singles$>$ qlaib\+::acquisition\+::\+Bin\+Replay\+Backend\+::singles\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/qlaib/acquisition/\mbox{\hyperlink{_bin_replay_backend_8h}{Bin\+Replay\+Backend.\+h}}\item 
+src/acquisition/\mbox{\hyperlink{_bin_replay_backend_8cpp}{Bin\+Replay\+Backend.\+cpp}}\end{DoxyCompactItemize}

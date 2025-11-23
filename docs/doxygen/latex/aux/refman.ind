@@ -1,0 +1,381 @@
+\begin{theindex}
+
+  \item {/home/bogfootlj/Documents/PhDCode/QLaibLibCpp/docs/ARCHITECTURE.md}, 
+		\hyperpage{59}
+  \item {/home/bogfootlj/Documents/PhDCode/QLaibLibCpp/docs/USAGE.md}, 
+		\hyperpage{59}
+  \item {\texorpdfstring{$\sim$}{\string~}IBackend}
+    \subitem {qlaib::acquisition::IBackend}, \hyperpage{25}
+  \item {\texorpdfstring{$\sim$}{\string~}IMetric}
+    \subitem {qlaib::metrics::IMetric}, \hyperpage{26}
+
+  \indexspace
+
+  \item {addPair}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{28}
+  \item {appendSample}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{28}
+
+  \indexspace
+
+  \item {backend\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {bufferSize\_}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{37}
+
+  \indexspace
+
+  \item {calibrateAll}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {calibrateSelected}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {Callback}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{23}
+  \item {cb}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$::Subscriber}, 
+		\hyperpage{40}
+  \item {cfg\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {chA}
+    \subitem {qlaib::ui::PairSpec}, \hyperpage{35}
+  \item {chB}
+    \subitem {qlaib::ui::PairSpec}, \hyperpage{35}
+  \item {chBuffer\_}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{37}
+  \item {coincidences}
+    \subitem {qlaib::data::SampleBatch}, \hyperpage{39}
+  \item {coincidenceWindowPs}
+    \subitem {qlaib::acquisition::BackendConfig}, \hyperpage{15}
+  \item {coincidenceWindowPs\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {coincWindowPs\_}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{19}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{37}
+  \item {compute}
+    \subitem {qlaib::metrics::DummyQBER}, \hyperpage{21}
+    \subitem {qlaib::metrics::DummyVisibility}, \hyperpage{22}
+    \subitem {qlaib::metrics::IMetric}, \hyperpage{26}
+  \item {computeAll}
+    \subitem {qlaib::metrics::Registry}, \hyperpage{38}
+  \item {computeHistogram}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {connected\_}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{38}
+  \item {counts}
+    \subitem {qlaib::data::Coincidence}, \hyperpage{20}
+  \item {currentSecond\_}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{19}
+
+  \indexspace
+
+  \item {delayPs}
+    \subitem {qlaib::ui::PairSpec}, \hyperpage{35}
+
+  \indexspace
+
+  \item {exportCsv}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {exposure\_}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{34}
+  \item {exposureMs\_}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{38}
+  \item {exposureSeconds}
+    \subitem {qlaib::acquisition::BackendConfig}, \hyperpage{15}
+
+  \indexspace
+
+  \item {findBestDelayPicoseconds}
+    \subitem {MainWindow.cpp}, \hyperpage{58}
+
+  \indexspace
+
+  \item {histogramWindowPs\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+
+  \indexspace
+
+  \item {include/qlaib/acquisition/BinReplayBackend.h}, 
+		\hyperpage{41, 42}
+  \item {include/qlaib/acquisition/IBackend.h}, \hyperpage{42, 43}
+  \item {include/qlaib/acquisition/MockBackend.h}, \hyperpage{44, 45}
+  \item {include/qlaib/acquisition/QuTAGBackend.h}, \hyperpage{45, 46}
+  \item {include/qlaib/core/EventBus.h}, \hyperpage{47, 48}
+  \item {include/qlaib/data/SampleBatch.h}, \hyperpage{48, 49}
+  \item {include/qlaib/metrics/IMetric.h}, \hyperpage{50, 51}
+  \item {include/qlaib/metrics/Registry.h}, \hyperpage{51, 52}
+  \item {include/qlaib/ui/MainWindow.h}, \hyperpage{53, 54}
+
+  \indexspace
+
+  \item {kDefaultChannelMask}
+    \subitem {qlaib::acquisition::anonymous\_namespace\lcurly{}QuTAGBackend.cpp\rcurly{}}, 
+		\hyperpage{14}
+
+  \indexspace
+
+  \item {label}
+    \subitem {qlaib::data::Coincidence}, \hyperpage{20}
+    \subitem {qlaib::ui::PairSpec}, \hyperpage{35}
+  \item {lastSecond\_}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{19}
+  \item {latestBatch\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {loadConfig}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+
+  \indexspace
+
+  \item {MainWindow}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{28}
+  \item {MainWindow.cpp}
+    \subitem {findBestDelayPicoseconds}, \hyperpage{58}
+  \item {metrics}
+    \subitem {qlaib::data::SampleBatch}, \hyperpage{39}
+  \item {metrics\_}
+    \subitem {qlaib::metrics::Registry}, \hyperpage{39}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {mode\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {mutex\_}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{23}
+
+  \indexspace
+
+  \item {name}
+    \subitem {qlaib::metrics::DummyQBER}, \hyperpage{21}
+    \subitem {qlaib::metrics::DummyVisibility}, \hyperpage{22}
+    \subitem {qlaib::metrics::IMetric}, \hyperpage{26}
+  \item {nextBatch}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{17}
+    \subitem {qlaib::acquisition::IBackend}, \hyperpage{25}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{33}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{36}
+  \item {nextToken\_}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{23}
+
+  \indexspace
+
+  \item {pairs\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {publish}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{23}
+
+  \indexspace
+
+  \item {qlaib}, \hyperpage{13}
+  \item {qlaib::acquisition}, \hyperpage{13}
+  \item {qlaib::acquisition::anonymous\_namespace\lcurly{}QuTAGBackend.cpp\rcurly{}}, 
+		\hyperpage{13}
+    \subitem {kDefaultChannelMask}, \hyperpage{14}
+  \item {qlaib::acquisition::BackendConfig}, \hyperpage{15}
+    \subitem {coincidenceWindowPs}, \hyperpage{15}
+    \subitem {exposureSeconds}, \hyperpage{15}
+    \subitem {replayFile}, \hyperpage{16}
+    \subitem {timestampBufferSize}, \hyperpage{16}
+    \subitem {useMock}, \hyperpage{16}
+  \item {qlaib::acquisition::BinReplayBackend}, \hyperpage{16}
+    \subitem {coincWindowPs\_}, \hyperpage{19}
+    \subitem {currentSecond\_}, \hyperpage{19}
+    \subitem {lastSecond\_}, \hyperpage{19}
+    \subitem {nextBatch}, \hyperpage{17}
+    \subitem {singles\_}, \hyperpage{19}
+    \subitem {start}, \hyperpage{17}
+    \subitem {stop}, \hyperpage{19}
+  \item {qlaib::acquisition::IBackend}, \hyperpage{24}
+    \subitem {\texorpdfstring{$\sim$}{\string~}IBackend}, 
+		\hyperpage{25}
+    \subitem {nextBatch}, \hyperpage{25}
+    \subitem {start}, \hyperpage{25}
+    \subitem {stop}, \hyperpage{25}
+  \item {qlaib::acquisition::MockBackend}, \hyperpage{32}
+    \subitem {exposure\_}, \hyperpage{34}
+    \subitem {nextBatch}, \hyperpage{33}
+    \subitem {rng\_}, \hyperpage{34}
+    \subitem {running\_}, \hyperpage{34}
+    \subitem {start}, \hyperpage{33}
+    \subitem {startTime\_}, \hyperpage{34}
+    \subitem {stop}, \hyperpage{33}
+  \item {qlaib::acquisition::QuTAGBackend}, \hyperpage{35}
+    \subitem {bufferSize\_}, \hyperpage{37}
+    \subitem {chBuffer\_}, \hyperpage{37}
+    \subitem {coincWindowPs\_}, \hyperpage{37}
+    \subitem {connected\_}, \hyperpage{38}
+    \subitem {exposureMs\_}, \hyperpage{38}
+    \subitem {nextBatch}, \hyperpage{36}
+    \subitem {recording\_}, \hyperpage{38}
+    \subitem {start}, \hyperpage{36}
+    \subitem {startRecording}, \hyperpage{37}
+    \subitem {stop}, \hyperpage{37}
+    \subitem {stopRecording}, \hyperpage{37}
+    \subitem {tsBuffer\_}, \hyperpage{38}
+  \item {qlaib::core}, \hyperpage{14}
+  \item {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{22}
+    \subitem {Callback}, \hyperpage{23}
+    \subitem {mutex\_}, \hyperpage{23}
+    \subitem {nextToken\_}, \hyperpage{23}
+    \subitem {publish}, \hyperpage{23}
+    \subitem {subscribe}, \hyperpage{23}
+    \subitem {subscribers\_}, \hyperpage{24}
+  \item {qlaib::core::EventBus$<$ Payload $>$::Subscriber}, 
+		\hyperpage{40}
+    \subitem {cb}, \hyperpage{40}
+    \subitem {token}, \hyperpage{40}
+  \item {qlaib::data}, \hyperpage{14}
+  \item {qlaib::data::Coincidence}, \hyperpage{19}
+    \subitem {counts}, \hyperpage{20}
+    \subitem {label}, \hyperpage{20}
+  \item {qlaib::data::SampleBatch}, \hyperpage{39}
+    \subitem {coincidences}, \hyperpage{39}
+    \subitem {metrics}, \hyperpage{39}
+    \subitem {singles}, \hyperpage{39}
+    \subitem {timestamp}, \hyperpage{39}
+    \subitem {timestamps\_ps}, \hyperpage{40}
+  \item {qlaib::metrics}, \hyperpage{14}
+  \item {qlaib::metrics::DummyQBER}, \hyperpage{20}
+    \subitem {compute}, \hyperpage{21}
+    \subitem {name}, \hyperpage{21}
+  \item {qlaib::metrics::DummyVisibility}, \hyperpage{21}
+    \subitem {compute}, \hyperpage{22}
+    \subitem {name}, \hyperpage{22}
+  \item {qlaib::metrics::IMetric}, \hyperpage{26}
+    \subitem {\texorpdfstring{$\sim$}{\string~}IMetric}, \hyperpage{26}
+    \subitem {compute}, \hyperpage{26}
+    \subitem {name}, \hyperpage{26}
+  \item {qlaib::metrics::Registry}, \hyperpage{38}
+    \subitem {computeAll}, \hyperpage{38}
+    \subitem {metrics\_}, \hyperpage{39}
+    \subitem {registerMetric}, \hyperpage{38}
+  \item {qlaib::ui}, \hyperpage{14}
+  \item {qlaib::ui::MainWindow}, \hyperpage{27}
+    \subitem {addPair}, \hyperpage{28}
+    \subitem {appendSample}, \hyperpage{28}
+    \subitem {backend\_}, \hyperpage{30}
+    \subitem {calibrateAll}, \hyperpage{29}
+    \subitem {calibrateSelected}, \hyperpage{29}
+    \subitem {cfg\_}, \hyperpage{30}
+    \subitem {coincidenceWindowPs\_}, \hyperpage{31}
+    \subitem {computeHistogram}, \hyperpage{29}
+    \subitem {exportCsv}, \hyperpage{29}
+    \subitem {histogramWindowPs\_}, \hyperpage{31}
+    \subitem {latestBatch\_}, \hyperpage{31}
+    \subitem {loadConfig}, \hyperpage{29}
+    \subitem {MainWindow}, \hyperpage{28}
+    \subitem {metrics\_}, \hyperpage{31}
+    \subitem {mode\_}, \hyperpage{31}
+    \subitem {pairs\_}, \hyperpage{31}
+    \subitem {refreshPairList}, \hyperpage{29}
+    \subitem {refreshPairsTable}, \hyperpage{29}
+    \subitem {removeSelectedPair}, \hyperpage{29}
+    \subitem {replayFile\_}, \hyperpage{31}
+    \subitem {resetPairs}, \hyperpage{29}
+    \subitem {saveConfig}, \hyperpage{29}
+    \subitem {setMode}, \hyperpage{30}
+    \subitem {setReplayFile}, \hyperpage{30}
+    \subitem {setupUi}, \hyperpage{30}
+    \subitem {start}, \hyperpage{30}
+    \subitem {stop}, \hyperpage{30}
+    \subitem {t0\_ms\_}, \hyperpage{31}
+    \subitem {tick}, \hyperpage{30}
+    \subitem {timer\_}, \hyperpage{31}
+    \subitem {toggleRecording}, \hyperpage{30}
+  \item {qlaib::ui::PairSpec}, \hyperpage{34}
+    \subitem {chA}, \hyperpage{35}
+    \subitem {chB}, \hyperpage{35}
+    \subitem {delayPs}, \hyperpage{35}
+    \subitem {label}, \hyperpage{35}
+  \item {QLaibLib Architecture (C++/Qt)}, \hyperpage{1}
+  \item {QLaibLib Usage (C++ Qt GUI)}, \hyperpage{3}
+
+  \indexspace
+
+  \item {recording\_}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{38}
+  \item {refreshPairList}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {refreshPairsTable}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {registerMetric}
+    \subitem {qlaib::metrics::Registry}, \hyperpage{38}
+  \item {removeSelectedPair}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {replayFile}
+    \subitem {qlaib::acquisition::BackendConfig}, \hyperpage{16}
+  \item {replayFile\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {resetPairs}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {rng\_}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{34}
+  \item {running\_}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{34}
+
+  \indexspace
+
+  \item {saveConfig}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{29}
+  \item {setMode}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {setReplayFile}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {setupUi}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {singles}
+    \subitem {qlaib::data::SampleBatch}, \hyperpage{39}
+  \item {singles\_}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{19}
+  \item {src/acquisition/BinReplayBackend.cpp}, \hyperpage{55}
+  \item {src/acquisition/MockBackend.cpp}, \hyperpage{56}
+  \item {src/acquisition/QuTAGBackend.cpp}, \hyperpage{56}
+  \item {src/metrics/Registry.cpp}, \hyperpage{57}
+  \item {src/ui/MainWindow.cpp}, \hyperpage{57}
+  \item {start}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{17}
+    \subitem {qlaib::acquisition::IBackend}, \hyperpage{25}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{33}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{36}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {startRecording}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{37}
+  \item {startTime\_}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{34}
+  \item {stop}
+    \subitem {qlaib::acquisition::BinReplayBackend}, \hyperpage{19}
+    \subitem {qlaib::acquisition::IBackend}, \hyperpage{25}
+    \subitem {qlaib::acquisition::MockBackend}, \hyperpage{33}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{37}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {stopRecording}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{37}
+  \item {subscribe}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{23}
+  \item {subscribers\_}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$}, \hyperpage{24}
+
+  \indexspace
+
+  \item {t0\_ms\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {tick}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {timer\_}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{31}
+  \item {timestamp}
+    \subitem {qlaib::data::SampleBatch}, \hyperpage{39}
+  \item {timestampBufferSize}
+    \subitem {qlaib::acquisition::BackendConfig}, \hyperpage{16}
+  \item {timestamps\_ps}
+    \subitem {qlaib::data::SampleBatch}, \hyperpage{40}
+  \item {toggleRecording}
+    \subitem {qlaib::ui::MainWindow}, \hyperpage{30}
+  \item {token}
+    \subitem {qlaib::core::EventBus$<$ Payload $>$::Subscriber}, 
+		\hyperpage{40}
+  \item {tsBuffer\_}
+    \subitem {qlaib::acquisition::QuTAGBackend}, \hyperpage{38}
+
+  \indexspace
+
+  \item {useMock}
+    \subitem {qlaib::acquisition::BackendConfig}, \hyperpage{16}
+
+\end{theindex}

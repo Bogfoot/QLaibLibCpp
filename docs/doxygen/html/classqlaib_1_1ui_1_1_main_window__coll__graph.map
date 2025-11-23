@@ -1,0 +1,9 @@
+<map id="qlaib::ui::MainWindow" name="qlaib::ui::MainWindow">
+<area shape="rect" id="Node000001" title="Main GUI window: drives backends and renders live metrics/plots." alt="" coords="129,108,296,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,121,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,43,196,106,193,110,92,47"/>
+<area shape="rect" id="Node000003" href="$structqlaib_1_1acquisition_1_1_backend_config.html" title="Immutable configuration shared by all acquisition backends." alt="" coords="146,5,279,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,59,215,108,210,108,210,59"/>
+<area shape="rect" id="Node000004" href="$classqlaib_1_1metrics_1_1_registry.html" title=" " alt="" coords="303,13,477,38"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="357,47,236,110,233,106,355,42"/>
+</map>

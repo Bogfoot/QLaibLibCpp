@@ -1,0 +1,22 @@
+<map id="include/qlaib/metrics/Registry.h" name="include/qlaib/metrics/Registry.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="342,5,501,45"/>
+<area shape="rect" id="Node000002" href="$_i_metric_8h.html" title=" " alt="" coords="185,93,353,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="386,48,306,89,303,84,384,43"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="418,240,481,265"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="426,45,449,226,444,227,421,46"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="459,93,536,119"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="442,44,478,81,474,85,438,47"/>
+<area shape="rect" id="Node000003" href="$_sample_batch_8h.html" title=" " alt="" coords="111,167,300,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="261,121,227,158,223,155,257,117"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,240,64,265"/>
+<area shape="poly" id="edge8_Node000002_Node000006" title=" " alt="" coords="211,121,155,139,126,153,100,169,71,198,49,229,45,226,67,195,97,165,124,148,153,135,210,116"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="270,240,394,265"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="282,117,299,139,314,166,325,197,331,226,326,227,320,198,310,168,294,142,278,120"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="179,240,245,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="209,192,212,226,207,227,204,193"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="88,240,155,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="194,194,147,233,144,229,190,190"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="179,194,76,237,74,232,177,190"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="227,190,301,231,298,235,224,194"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="245,189,405,236,404,241,244,195"/>
+</map>
