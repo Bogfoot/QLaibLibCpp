@@ -82,6 +82,7 @@ private:
   void refreshPairsTable();
   void saveConfig();
   void loadConfig();
+  int computePollIntervalMs() const;
 
   acquisition::BackendConfig cfg_;
   std::unique_ptr<acquisition::IBackend> backend_;

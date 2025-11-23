@@ -314,12 +314,20 @@ void MainWindow::start() {
     qInfo("MainWindow::start: backend %s started", backendName);
   }
   t0_ms_ = QDateTime::currentMSecsSinceEpoch();
+  timer_.setInterval(computePollIntervalMs());
   timer_.start();
 }
 
 void MainWindow::stop() {
   timer_.stop();
   backend_->stop();
+}
+
+int MainWindow::computePollIntervalMs() const {
+  // Poll at the exposure period (in ms), clamped to sensible UI ranges.
+  int ms = static_cast<int>(std::round(cfg_.exposureSeconds * 1000.0));
+  ms = std::clamp(ms, 50, 60000); // between 50 ms and 60 s
+  return ms;
 }
 
 void MainWindow::restartBackend() {
