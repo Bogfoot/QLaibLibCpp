@@ -14,6 +14,43 @@ if(QQL_BUILD_GUI)
     if(QQL_ENABLE_CHARTS)
         target_compile_definitions(qlaib_gui PRIVATE QQL_ENABLE_CHARTS=1)
     endif()
+
+    # Windows: deploy Qt runtime and vendor DLLs automatically after build.
+    if(WIN32)
+        option(QQL_AUTO_WDEPLOY "Run windeployqt and copy vendor DLLs after building qlaib_gui" ON)
+        if(QQL_AUTO_WDEPLOY)
+            # Locate windeployqt: prefer QT_ROOT, fall back to Qt6_DIR-derived bin.
+            find_program(QQL_WDEPLOYQT_EXECUTABLE
+                NAMES windeployqt.exe
+                HINTS
+                    $ENV{QT_ROOT}/bin
+                    ${Qt6_DIR}/../../../bin
+                    ${QT6_INSTALL_PREFIX}/bin
+            )
+            if(QQL_WDEPLOYQT_EXECUTABLE)
+                add_custom_command(TARGET qlaib_gui POST_BUILD
+                    COMMAND "${QQL_WDEPLOYQT_EXECUTABLE}" --release --compiler-runtime $<TARGET_FILE:qlaib_gui>
+                    COMMENT "windeployqt qlaib_gui (Release)"
+                )
+            else()
+                message(WARNING "windeployqt.exe not found; set QT_ROOT or QQL_WDEPLOYQT_EXECUTABLE to enable auto-deploy.")
+            endif()
+
+            # Copy vendor DLLs (quTAG/libusb/MinGW) shipped in DLL_64bit beside the exe.
+            set(QQL_VENDOR_DLL_DIR "${CMAKE_SOURCE_DIR}/../DLL_64bit")
+            if(EXISTS "${QQL_VENDOR_DLL_DIR}")
+                file(GLOB QQL_VENDOR_DLLS "${QQL_VENDOR_DLL_DIR}/*.dll")
+                if(QQL_VENDOR_DLLS)
+                    add_custom_command(TARGET qlaib_gui POST_BUILD
+                        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                            ${QQL_VENDOR_DLLS}
+                            $<TARGET_FILE_DIR:qlaib_gui>
+                        COMMENT "Copying vendor DLLs from ${QQL_VENDOR_DLL_DIR}"
+                    )
+                endif()
+            endif()
+        endif()
+    endif()
 endif()
 
 if(QQL_ENABLE_QUTAG)
