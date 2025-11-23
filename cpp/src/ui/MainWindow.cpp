@@ -326,7 +326,7 @@ void MainWindow::stop() {
 int MainWindow::computePollIntervalMs() const {
   // Poll at the exposure period (in ms), clamped to sensible UI ranges.
   int ms = static_cast<int>(std::round(cfg_.exposureSeconds * 1000.0));
-  ms = std::clamp(ms, 50, 60000); // between 50 ms and 60 s
+  ms = std::max(50, ms); // minimum 50 ms, no upper clamp
   return ms;
 }
 
