@@ -37,6 +37,14 @@ int main(int argc, char **argv) {
   w.show();
   std::cerr << "[qlaib_gui] Starting backend\n";
   w.start();
+  {
+    const auto args = app.arguments();
+    std::cerr << "[qlaib_gui] argv (" << args.size() << "):";
+    for (int i = 0; i < args.size(); ++i) {
+      std::cerr << " [" << i << "]=" << args[i].toStdString();
+    }
+    std::cerr << "\n";
+  }
   auto rc = app.exec();
   std::cerr << "[qlaib_gui] Exit code " << rc << "\n";
   return rc;

@@ -1,0 +1,60 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "win-msvc-release",
+      "displayName": "Windows MSVC (Ninja) Release + Qt Charts + quTAG",
+      "description": "Assumes Qt at C:/Qt/6.10.1/msvc2022_64; override with QT_ROOT or CMAKE_PREFIX_PATH.",
+      "generator": "Ninja",
+      "sourceDir": "cpp",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_PREFIX_PATH": "$env{QT_ROOT}/lib/cmake",
+        "QQL_BUILD_GUI": "ON",
+        "QQL_ENABLE_CHARTS": "ON",
+        "QQL_ENABLE_QUTAG": "ON",
+        "COINCFINDER_CORE": "${sourceDir}/../coincfinder/build/coincfinder_core.lib",
+        "TDCBASE_LIB": "${sourceDir}/../DLL_64bit/tdcbase.lib"
+      },
+      "environment": {
+        "QT_ROOT": "C:/Qt/6.10.1/msvc2022_64"
+      },
+      "vendor": {
+        "microsoft.com/VisualStudioSettings/CMake/1.0": {
+          "hostOS": [
+            "Windows"
+          ]
+        }
+      }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release (Ninja)",
+      "generator": "Ninja",
+      "sourceDir": "cpp",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "QQL_BUILD_GUI": "ON",
+        "QQL_ENABLE_CHARTS": "ON",
+        "QQL_ENABLE_QUTAG": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "win-msvc-release",
+      "configurePreset": "win-msvc-release"
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release"
+    }
+  ]
+}

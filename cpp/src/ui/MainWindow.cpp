@@ -27,6 +27,7 @@ long long findBestDelayPicoseconds(
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLabel>
+#include <QDebug>
 #include <QPushButton>
 #include <QShortcut>
 #include <QSpinBox>
@@ -278,10 +279,34 @@ void MainWindow::setupHistogramTab() {
 #endif
 
 void MainWindow::start() {
-  if (!backend_->start(cfg_)) {
+  const auto backendName = [this]() -> const char * {
+    if (dynamic_cast<acquisition::MockBackend *>(backend_.get()))
+      return "MockBackend";
+    if (dynamic_cast<acquisition::BinReplayBackend *>(backend_.get()))
+      return "BinReplayBackend";
+    if (dynamic_cast<acquisition::QuTAGBackend *>(backend_.get()))
+      return "QuTAGBackend";
+    return "UnknownBackend";
+  }();
+
+  qInfo("MainWindow::start backend=%s mode=%s replay=%s useMock=%d "
+        "exposure=%.3fs buf=%d coincWin=%lld",
+        backendName, qPrintable(mode_), qPrintable(replayFile_),
+        cfg_.useMock ? 1 : 0, cfg_.exposureSeconds, cfg_.timestampBufferSize,
+        static_cast<long long>(cfg_.coincidenceWindowPs));
+
+  const bool started = backend_->start(cfg_);
+  if (!started) {
+    qWarning("MainWindow::start: backend %s failed to start, "
+             "switching to MockBackend", backendName);
     statusBar()->showMessage("Backend failed to start; switching to mock");
     backend_ = std::make_unique<acquisition::MockBackend>();
-    backend_->start(cfg_);
+    cfg_.useMock = true;
+    const bool mockStarted = backend_->start(cfg_);
+    qInfo("MainWindow::start: MockBackend %s",
+          mockStarted ? "started" : "failed to start");
+  } else {
+    qInfo("MainWindow::start: backend %s started", backendName);
   }
   t0_ms_ = QDateTime::currentMSecsSinceEpoch();
   timer_.start();

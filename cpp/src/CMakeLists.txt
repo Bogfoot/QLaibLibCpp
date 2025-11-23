@@ -20,15 +20,18 @@ target_include_directories(qlaibcpp PUBLIC
 
 if(QQL_ENABLE_QUTAG)
     target_compile_definitions(qlaibcpp PUBLIC QQL_ENABLE_QUTAG)
-    target_include_directories(qlaibcpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../QuTAGC/inc)
-    # Look for libtdcbase (shipped in repo root or system)
-    find_library(TDCBASE_LIB NAMES tdcbase libtdcbase PATHS
-        ${CMAKE_SOURCE_DIR}
-        ${CMAKE_SOURCE_DIR}/..
+    target_include_directories(qlaibcpp PUBLIC ${CMAKE_SOURCE_DIR}/../QuTAGC/inc)
+    # Look for libtdcbase (preferred in repo root/DLL_64bit/DLL_32bit or QuTAGC/lib)
+    find_library(TDCBASE_LIB NAMES tdcbase libtdcbase tdcbase.lib PATHS
+        ${CMAKE_SOURCE_DIR}/..                # repository root (dll/so beside checkout)
+        ${CMAKE_SOURCE_DIR}/../DLL_64bit      # shipped 64-bit Windows DLLs/libs
+        ${CMAKE_SOURCE_DIR}/../DLL_32bit      # shipped 32-bit Windows DLLs/libs
+        ${CMAKE_SOURCE_DIR}/../QuTAGC/lib     # vendor lib dir now at repo root
+        ${CMAKE_SOURCE_DIR}                   # legacy root
         /usr/lib /usr/local/lib /usr/lib/x86_64-linux-gnu
     )
     if(NOT TDCBASE_LIB)
-        message(FATAL_ERROR "QQL_ENABLE_QUTAG=ON but libtdcbase not found. Place libtdcbase.so in repo root or install SDK.")
+        message(FATAL_ERROR "QQL_ENABLE_QUTAG=ON but libtdcbase not found. Place tdcbase.so/tdcbase.dll in repository root or DLL_64bit, or install the SDK.")
     endif()
     target_link_libraries(qlaibcpp PUBLIC ${TDCBASE_LIB})
 endif()
