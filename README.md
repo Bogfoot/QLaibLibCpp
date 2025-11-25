@@ -80,3 +80,6 @@ C:/Users/LjubljanaLab/Desktop/QLaibLibCpp/cpp/build/apps/qlaib_gui.exe --mode=mo
 - Use the vendor DLLs in `DLL_64bit/` (`tdcbase.dll`, `tdcbase.lib`, plus `libusb0.dll`, `libgcc_s_seh-1.dll`, `libstdc++-6.dll`, `libwinpthread-1.dll`).
 - Point CMake to the import lib: `-DTDCBASE_LIB=.../DLL_64bit/tdcbase.lib`.
 - Ensure `tdcbase.dll` and deps are beside the exe (copy `DLL_64bit/*.dll` into `cpp/build/apps/`).
+
+## License
+MIT — see `LICENSE` for details. Copyright (c) 2025 Adrian Udovičić, PhD student in physics at University of Ljubljana, Faculty of Mathematics and Physics.
